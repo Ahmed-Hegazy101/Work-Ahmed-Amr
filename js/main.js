@@ -191,7 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
       nextBtn,
       dotsContainer,
       dotClass = 'slider-dot',
-      getVisibleCards
+      getVisibleCards,
+      allowImagePointerEvents = false,
+      deferPointerCapture = false,
+      loop = false
     } = config;
 
     if (!wrapper || !track) return null;
@@ -235,6 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function clampSlideIndex(index) {
+      if (loop && totalSlides > 0) {
+        return ((index % totalSlides) + totalSlides) % totalSlides;
+      }
       const maxIndex = Math.max(0, totalSlides - 1);
       return Math.max(0, Math.min(index, maxIndex));
     }
@@ -319,6 +325,11 @@ document.addEventListener('DOMContentLoaded', () => {
       updateLayout(true);
     }
 
+    function goTo(index, animate = true) {
+      currentSlide = clampSlideIndex(index);
+      updatePosition(animate);
+    }
+
     if (prevBtn) {
       prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -336,14 +347,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function onPointerDown(e) {
       if (e.pointerType === 'touch') return;
       if (e.pointerType === 'mouse' && e.button !== 0) return;
-      if (e.target instanceof Element && e.target.closest('.work-card-zoom-btn, .testimonial-proof-frame')) return;
+      if (e.target instanceof Element && e.target.closest('.testimonial-proof-frame')) return;
       isDragging = true;
       dragMoved = false;
       dragDirectionDecided = false;
       isHorizontalDrag = false;
       startX = e.clientX;
       startY = e.clientY;
-      track.setPointerCapture(e.pointerId);
+      if (!deferPointerCapture) track.setPointerCapture(e.pointerId);
       track.style.transition = 'none';
     }
 
@@ -356,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 8) {
           isDragging = false;
           dragDirectionDecided = true;
-          track.releasePointerCapture(e.pointerId);
+          if (!deferPointerCapture) track.releasePointerCapture(e.pointerId);
           track.style.transition = 'transform 0.35s ease-out';
           track.style.transform = `translate3d(${prevTranslate}px, 0, 0)`;
           return;
@@ -364,6 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 8) {
           dragDirectionDecided = true;
           isHorizontalDrag = true;
+          if (deferPointerCapture) track.setPointerCapture(e.pointerId);
           track.classList.add('dragging');
         }
       }
@@ -513,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.addEventListener('touchcancel', onTouchCancel, { passive: true });
 
     track.querySelectorAll('img').forEach(img => {
-      img.style.pointerEvents = 'none';
+      img.style.pointerEvents = allowImagePointerEvents ? 'auto' : 'none';
       img.style.userSelect = 'none';
       img.setAttribute('draggable', 'false');
     });
@@ -537,6 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
       next,
       prev,
       reset,
+      goTo,
       isJustDragged: () => justDragged
     };
   }
@@ -548,8 +561,97 @@ document.addEventListener('DOMContentLoaded', () => {
   const portfolioNextBtn = document.querySelector('#portfolio .slider-btn-next');
   const portfolioDots = document.getElementById('portfolio-slider-dots');
   const filterTabs = document.querySelectorAll('.filter-tab');
+  const portfolioLightbox = document.getElementById('portfolio-lightbox');
+  const portfolioLightboxTrack = portfolioLightbox
+    ? portfolioLightbox.querySelector('.portfolio-lightbox-track')
+    : null;
+  const portfolioLightboxWrapper = portfolioLightbox
+    ? portfolioLightbox.querySelector('.portfolio-lightbox-slider-wrapper')
+    : null;
+  const portfolioLightboxNextBtn = portfolioLightbox
+    ? portfolioLightbox.querySelector('.portfolio-lightbox-next')
+    : null;
+  const portfolioLightboxPrevBtn = portfolioLightbox
+    ? portfolioLightbox.querySelector('.portfolio-lightbox-prev')
+    : null;
+  const portfolioLightboxCloseBtn = portfolioLightbox
+    ? portfolioLightbox.querySelector('.portfolio-lightbox-close')
+    : null;
 
   let portfolioSlider = null;
+  let portfolioLightboxSlider = null;
+  let portfolioLightboxTrigger = null;
+
+  if (portfolioLightboxTrack) {
+    portfolioLightboxSlider = initSlider({
+      wrapper: portfolioLightboxWrapper,
+      track: portfolioLightboxTrack,
+      getVisibleCards: () => Array.from(portfolioLightboxTrack.children),
+      allowImagePointerEvents: true,
+      deferPointerCapture: true,
+      loop: true
+    });
+
+    if (portfolioLightboxPrevBtn) {
+      portfolioLightboxPrevBtn.addEventListener('click', () => portfolioLightboxSlider.next());
+    }
+    if (portfolioLightboxNextBtn) {
+      portfolioLightboxNextBtn.addEventListener('click', () => portfolioLightboxSlider.prev());
+    }
+  }
+
+  function openPortfolioLightbox(index, trigger) {
+    if (!portfolioLightbox || !portfolioLightboxSlider) return;
+
+    const visibleCards = portfolioTrack
+      ? Array.from(portfolioTrack.querySelectorAll('.work-card:not(.hidden-by-filter)'))
+      : [];
+    const galleryItems = visibleCards.map(card => {
+      const image = card.querySelector('img');
+      return image ? {
+        index: Number(card.getAttribute('data-gallery-index')),
+        src: image.getAttribute('src'),
+        alt: image.getAttribute('alt') || ''
+      } : null;
+    }).filter(item => item && item.src);
+    const selectedIndex = galleryItems.findIndex(item => item.index === index);
+    if (selectedIndex < 0 || galleryItems.length === 0) return;
+
+    portfolioLightboxTrack.innerHTML = '';
+    galleryItems.forEach(item => {
+      const slide = document.createElement('div');
+      slide.className = 'portfolio-lightbox-slide';
+
+      const image = document.createElement('img');
+      image.setAttribute('src', item.src);
+      image.alt = item.alt;
+      image.loading = 'lazy';
+
+      slide.appendChild(image);
+      portfolioLightboxTrack.appendChild(slide);
+    });
+
+    portfolioLightboxTrigger = trigger;
+    portfolioLightbox.classList.add('active');
+    portfolioLightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    portfolioLightboxSlider.updateLayout(false);
+    portfolioLightboxSlider.goTo(selectedIndex, false);
+    portfolioLightboxCloseBtn.focus();
+
+    const activeImage = portfolioLightboxTrack.children[selectedIndex].querySelector('img');
+    if (activeImage) activeImage.loading = 'eager';
+  }
+
+  function closePortfolioLightbox() {
+    if (!portfolioLightbox || !portfolioLightbox.classList.contains('active')) return;
+
+    portfolioLightbox.classList.remove('active');
+    portfolioLightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (portfolioLightboxTrigger) portfolioLightboxTrigger.focus();
+    portfolioLightboxTrigger = null;
+  }
 
   function renderPortfolioCards(items) {
     if (!portfolioTrack) return;
@@ -558,16 +660,16 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => {
       const card = document.createElement('article');
       card.className = 'work-card glass-card';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `عرض ${item.title}`);
       card.setAttribute('data-category', item.category);
       card.setAttribute('data-full', item.image);
       card.setAttribute('data-caption', `${item.title} - ${item.categoryName}`);
+      card.setAttribute('data-gallery-index', portfolioItems.indexOf(item));
 
       card.innerHTML = `
         <div class="work-card-img">
-          <button class="work-card-zoom-btn" type="button" aria-label="تكبير العمل" data-full="${item.image}" data-caption="${item.title} - ${item.categoryName}">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-            <span>تكبير</span>
-          </button>
           <img src="${item.image}" alt="${item.title}" loading="lazy" draggable="false" style="pointer-events:none;user-select:none;" />
           <div class="work-card-overlay"></div>
           <div class="work-card-badge" style="${item.badgeStyle || ''}">${item.badge}</div>
@@ -578,25 +680,20 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      const zoomButton = card.querySelector('.work-card-zoom-btn');
-      if (zoomButton) {
-        zoomButton.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (portfolioSlider && portfolioSlider.isJustDragged()) {
-            e.preventDefault();
-            return;
-          }
-          openLightbox(item.image, `${item.title} - ${item.categoryName}`);
-        });
-      }
-
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('.work-card-zoom-btn')) return;
+      const openFromCard = (e) => {
         if (portfolioSlider && portfolioSlider.isJustDragged()) {
           e.preventDefault();
           return;
         }
-        openLightbox(item.image, `${item.title} - ${item.categoryName}`);
+        openPortfolioLightbox(portfolioItems.indexOf(item), card);
+      };
+
+      card.addEventListener('click', openFromCard);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openFromCard(e);
+        }
       });
 
       portfolioTrack.appendChild(card);
@@ -613,6 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn: portfolioNextBtn,
     dotsContainer: portfolioDots,
     dotClass: 'slider-dot',
+    deferPointerCapture: true,
     getVisibleCards: () => {
       if (!portfolioTrack) return [];
       return Array.from(portfolioTrack.children).filter(card => !card.classList.contains('hidden-by-filter'));
@@ -775,6 +873,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', () => {
     if (portfolioSlider) portfolioSlider.updateLayout(false);
     if (testimonialsSlider) testimonialsSlider.updateLayout(false);
+    if (portfolioLightbox && portfolioLightbox.classList.contains('active') && portfolioLightboxSlider) {
+      portfolioLightboxSlider.updateLayout(false);
+    }
   });
 
   /* Stats counters */
@@ -875,10 +976,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  if (portfolioLightbox) {
+    portfolioLightbox.addEventListener('click', (e) => {
+      if (e.target.closest('.portfolio-lightbox-slide img, .portfolio-lightbox-next, .portfolio-lightbox-prev, .portfolio-lightbox-close')) return;
+      closePortfolioLightbox();
+    });
+  }
+
+  if (portfolioLightboxCloseBtn) {
+    portfolioLightboxCloseBtn.addEventListener('click', closePortfolioLightbox);
+  }
+
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeLightbox();
+      closePortfolioLightbox();
       closeMobileNav();
+      return;
+    }
+
+    if (portfolioLightbox && portfolioLightbox.classList.contains('active') && portfolioLightboxSlider) {
+      if (e.key === 'ArrowLeft') portfolioLightboxSlider.next();
+      if (e.key === 'ArrowRight') portfolioLightboxSlider.prev();
     }
   });
 
