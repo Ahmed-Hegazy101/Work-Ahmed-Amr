@@ -120,21 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Portfolio data */
   const portfolioItems = [
     // Store projects
-    { id: 1, category: 'store', categoryName: 'تطوير المتاجر', badge: 'سلة وزد', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر إلكتروني متكامل', subtitle: 'تجهيز سلة وزد وشوبيفاي', image: 'assets/portfolio/stores/1.webp' },
-    { id: 2, category: 'store', categoryName: 'تطوير المتاجر', badge: 'بوابات دفع', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'منصة تجارة وبوابة دفع', subtitle: 'واجهة مستخدم وتجربة شراء سلسة', image: 'assets/portfolio/stores/2.webp' },
-    { id: 3, category: 'store', categoryName: 'تطوير المتاجر', badge: 'سلة برو', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر سلة رقمي', subtitle: 'تجهيز منتجات وفلاتر متقدمة', image: 'assets/portfolio/stores/3.webp' },
-    { id: 4, category: 'store', categoryName: 'تطوير المتاجر', badge: 'متجر عطور', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'براند عطور ومستحضرات', subtitle: 'تصميم بانرات وهوية للمنتجات', image: 'assets/portfolio/stores/4.webp' },
-    { id: 5, category: 'store', categoryName: 'تطوير المتاجر', badge: 'أزياء وموضة', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر أزياء وإكسسوارات', subtitle: 'تصنيفات متقدمة وجدول مقاسات', image: 'assets/portfolio/stores/5.webp' },
-    { id: 6, category: 'store', categoryName: 'تطوير المتاجر', badge: 'إلكترونيات', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر أجهزة وتقنية', subtitle: 'ربط المخزون والموردين آلياً', image: 'assets/portfolio/stores/6.webp' },
-    { id: 7, category: 'store', categoryName: 'تطوير المتاجر', badge: 'أغذية وتمور', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر تمور ومأكولات', subtitle: 'تكامل الشحن المبرد والتوصيل السريع', image: 'assets/portfolio/stores/7.webp' },
-    { id: 8, category: 'store', categoryName: 'تطوير المتاجر', badge: 'هدايا وتوزيعات', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر هدايا وتوزيعات', subtitle: 'تخصيص خيارات وكتابة الإهداء', image: 'assets/portfolio/stores/8.webp' },
-    { id: 9, category: 'store', categoryName: 'تطوير المتاجر', badge: 'مستلزمات رياضية', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر معدات رياضية', subtitle: 'تصميم حركي وتجربة تسوق سريعة', image: 'assets/portfolio/stores/9.webp' },
-    { id: 10, category: 'store', categoryName: 'تطوير المتاجر', badge: 'أدوات منزلية', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر أثاث ومستلزمات منزل', subtitle: 'عرض صور المنتجات بدقة فائقة', image: 'assets/portfolio/stores/10.webp' },
-    { id: 11, category: 'store', categoryName: 'تطوير المتاجر', badge: 'مجوهرات فاخرة', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر مجوهرات وبراند راقي', subtitle: 'واجهات أنيقة تعكس الفخامة', image: 'assets/portfolio/stores/11.webp' },
-    { id: 12, category: 'store', categoryName: 'تطوير المتاجر', badge: 'كتب وقرطاسية', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر كتب وقرطاسية', subtitle: 'تنظيم آلاف المنتجات والكتب', image: 'assets/portfolio/stores/12.webp' },
-    { id: 13, category: 'store', categoryName: 'تطوير المتاجر', badge: 'تجارة B2B', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'منصة بيع بالجملة وشركات', subtitle: 'فواتير ضريبية وأسعار كميات', image: 'assets/portfolio/stores/13.webp' },
-    { id: 14, category: 'store', categoryName: 'تطوير المتاجر', badge: 'محاصيل بن', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر قهوة ومحاصيل مختصة', subtitle: 'بانرات احترافية وتصنيف النكهات', image: 'assets/portfolio/stores/14.webp' },
-    { id: 15, category: 'store', categoryName: 'تطوير المتاجر', badge: 'تحسين التحويل CRO', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'تطوير وتحديث متجر شامل', subtitle: 'مضاعفة المبيعات وتسهيل الدفع', image: 'assets/portfolio/stores/15.webp' },
+    { id: 1, category: 'store', categoryName: 'تطوير المتاجر', badge: 'إلكترونيات', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر TAONITY للإلكترونيات', subtitle: 'متجر إلكتروني لإكسسوارات الكمبيوتر', image: 'assets/portfolio/stores/1.webp' },
+    { id: 2, category: 'graphic', categoryName: 'جرافيك وإنتاج مرئي', badge: 'تصاميم رياضية', badgeStyle: 'background: rgba(220, 38, 38, 0.92);', title: 'حملات بصرية لموسم رياضي', subtitle: 'تصاميم إعلانية لكرة القدم', image: 'assets/portfolio/stores/2.webp' },
+    { id: 3, category: 'store', categoryName: 'تطوير المتاجر', badge: 'عطور وبخور', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر عائلة الطيب للعطور', subtitle: 'واجهة متجر للعطور والبخور', image: 'assets/portfolio/stores/3.webp' },
+    { id: 4, category: 'store', categoryName: 'تطوير المتاجر', badge: 'قهوة خليجية', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر قهوة خليجية', subtitle: 'عرض منتجات القهوة ومستلزماتها', image: 'assets/portfolio/stores/4.webp' },
+    { id: 5, category: 'store', categoryName: 'تطوير المتاجر', badge: 'أزياء محتشمة', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر ملابس المحجبات', subtitle: 'تصميم واجهة متجر للأزياء المحتشمة', image: 'assets/portfolio/stores/5.webp' },
+    { id: 6, category: 'store', categoryName: 'تطوير المتاجر', badge: 'عناية وجمال', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر Beauty Pioneers', subtitle: 'منتجات العناية الشخصية والتجميل', image: 'assets/portfolio/stores/6.webp' },
+    { id: 7, category: 'store', categoryName: 'تطوير المتاجر', badge: 'مخبوزات', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر مخبوزات طازجة', subtitle: 'واجهة متجر للمخبوزات والمعجنات', image: 'assets/portfolio/stores/7.webp' },
+    { id: 8, category: 'store', categoryName: 'تطوير المتاجر', badge: 'عود وبخور', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر نخبة الأصالة للعود', subtitle: 'عرض منتجات العود والمباخر', image: 'assets/portfolio/stores/8.webp' },
+    { id: 9, category: 'store', categoryName: 'تطوير المتاجر', badge: 'عسل طبيعي', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر طعم العسل', subtitle: 'واجهة متجر للعسل ومنتجاته', image: 'assets/portfolio/stores/9.webp' },
+    { id: 10, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'موقع طبي', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'موقع مجمع VivaVision الطبي', subtitle: 'تصميم وتطوير موقع لمجمع طبي', image: 'assets/portfolio/stores/10.webp' },
+    { id: 11, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'عيادة أطفال', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'موقع عيادة د. رحام إمام', subtitle: 'موقع WordPress لعيادة أطفال', image: 'assets/portfolio/stores/11.webp' },
+    { id: 12, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'استدامة', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'موقع مركز استدامة للحلول', subtitle: 'موقع WordPress لمركز استدامة', image: 'assets/portfolio/stores/12.webp' },
+    { id: 13, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'جمعية خيرية', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'موقع جمعية البر الخيرية', subtitle: 'تعريف بالخدمات والمشاريع الخيرية', image: 'assets/portfolio/stores/13.webp' },
+    { id: 14, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'مؤسسة خيرية', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'موقع مؤسسة العون', subtitle: 'موقع WordPress لمبادرات المؤسسة', image: 'assets/portfolio/stores/14.webp' },
+    { id: 15, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'حماية السيارات', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'موقع CP Protection', subtitle: 'موقع لخدمات حماية السيارات', image: 'assets/portfolio/stores/15.webp' },
 
     // Graphic projects
     { id: 16, category: 'graphic', categoryName: 'جرافيك وإنتاج مرئي', badge: 'إنتاج مرئي', badgeStyle: 'background: rgba(220, 38, 38, 0.92);', title: 'تصاميم بصرية احترافية', subtitle: 'محتوى تفاعلي وإعلاني جاذب', image: 'assets/portfolio/graphics/1.webp' },
@@ -217,10 +217,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calculateCardsPerView() {
-      const w = window.innerWidth;
-      if (w < 640) return 1;
-      if (w < 1024) return 2;
-      return 3;
+      const cards = getCards();
+      if (cards.length === 0) return 1;
+
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 20;
+      const card = cards[0];
+      const cardStyle = window.getComputedStyle(card);
+      const cardWidth = card.getBoundingClientRect().width
+        + (parseFloat(cardStyle.marginLeft) || 0)
+        + (parseFloat(cardStyle.marginRight) || 0);
+      return Math.max(1, Math.floor((wrapper.offsetWidth + gap + 1) / (cardWidth + gap)));
     }
 
     function clampSlideIndex(index) {
@@ -389,13 +395,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isHorizontalDrag) return;
 
       const diff = e.clientX - startX;
-      if (diff < -40) {
+      if (diff < -30) {
         next();
-      } else if (diff > 40) {
+      } else if (diff > 30) {
         prev();
       } else {
         updatePosition(true);
       }
+      isHorizontalDrag = false;
+      dragMoved = false;
+      dragDirectionDecided = false;
     }
 
     function onPointerCancel() {
