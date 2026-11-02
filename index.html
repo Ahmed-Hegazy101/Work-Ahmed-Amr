@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أحمد أبو عامر | استشاري خدمات إلكترونية</title>
+  <link rel="icon" type="image/png" href="assets/personal/Avater.png" />
+  <!-- Google Fonts: Cairo, Tajawal & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900;1000&family=Tajawal:wght@800;900&family=Plus+Jakarta+Sans:wght@500;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- خلفية النقاط والتوهج السماوي -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <!-- ========================
+       TOP NAVBAR (Unified Glass Curtain Navbar)
+       ======================== -->
+  <header class="header">
+    <div class="nav-container glass-navbar reveal-item delay-1">
+
+      <!-- زر اللوجو والاسم (على اليمين في RTL) -->
+      <a href="#hero" class="nav-brand">
+        <img src="assets/personal/Avater.png" alt="أحمد أبو عامر" />
+        <span>أحمد أبو عامر</span>
+      </a>
+
+      <!-- قائمة التنقل (على اليسار في RTL) -->
+      <nav class="nav-links">
+        <a href="#hero" class="active">الرئيسية</a>
+        <a href="#portfolio">أعمالي</a>
+        <a href="#about">من أنا</a>
+        <a href="#services">خدماتي</a>
+        <a href="#stats">إنجازاتي</a>
+        <a href="#testimonials">آراء العملاء</a>
+        <a href="#contact">تواصل معي</a>
+      </nav>
+
+      <!-- زر القائمة لشاشات الجوال -->
+      <button class="nav-menu-btn" type="button" aria-label="القائمة">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" type="button" aria-label="إغلاق">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <a class="mobile-nav-link active" href="#hero">الرئيسية</a>
+    <a class="mobile-nav-link" href="#portfolio">أعمالي</a>
+    <a class="mobile-nav-link" href="#about">من أنا</a>
+    <a class="mobile-nav-link" href="#services">خدماتي</a>
+    <a class="mobile-nav-link" href="#stats">إنجازاتي</a>
+    <a class="mobile-nav-link" href="#testimonials">آراء العملاء</a>
+    <a class="mobile-nav-link" href="#contact">تواصل معي</a>
+  </div>
+
+  <!-- ========================
+       MAIN CONTENT
+       ======================== -->
+  <main>
+
+    <!-- ========================
+         HERO SECTION (Custom Cyberpunk Cyan Hero)
+         ======================== -->
+    <section id="hero" class="hero">
+      <div class="hero-container">
+        <!-- النص العريض "خلّ إبداعك يتكلم." مع فاصل مريح بين السطرين -->
+        <div class="hero-phrase reveal-item delay-2">
+          <span class="l1">خلّ إبداعك</span>
+          <span class="l2">يتكلم.</span>
+        </div>
+
+        <!-- الأفاتار نازل لأسفل بحيث يغطي فقط الجزء السفلي البسيط من "يتكلم." -->
+        <div class="avatar-area reveal-item delay-3">
+          <div class="avatar-rings"></div>
+          <div class="hero-avatar">
+            <img src="assets/personal/Avater.png" alt="أحمد أبو عامر" />
+          </div>
+        </div>
+
+        <!-- الشريط السفلي (الاسم، الوظيفة، زر أعمالي) -->
+        <div class="hero-bottom reveal-item delay-4">
+          <div class="hero-meta">
+            <h2>أحمد أبو عامر</h2>
+            <p>استشاري خدمات إلكترونية</p>
+          </div>
+
+          <a href="#portfolio" class="btn-works">
+            <span>أعمالي</span>
+            <span class="arrow">←</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         PORTFOLIO SECTION ("أعمالي")
+         ======================== -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <!-- Header & Category Filters -->
+        <div class="portfolio-header reveal">
+          <div class="portfolio-header-text">
+            <span class="section-label">معرض المنجزات</span>
+            <h2 class="section-title">أعمالي</h2>
+            <p class="section-subtitle">نماذج منتقاة لمشاريع تقنية وتجارية ناجحة تم تنفيذها باحترافية عالية</p>
+          </div>
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">الكل</button>
+            <button class="filter-tab" data-filter="store">تطوير المتاجر</button>
+            <button class="filter-tab" data-filter="graphic">جرافيك وإنتاج مرئي</button>
+            <button class="filter-tab" data-filter="dev">برمجة وتطوير</button>
+            <button class="filter-tab" data-filter="marketing">تسويق وحملات</button>
+          </div>
+        </div>
+
+        <!-- Slider with Local Images & Unified Aspect Ratio -->
+        <div class="slider-wrapper">
+          <div class="slider-track" id="portfolio-slider-track">
+            <!-- Populated dynamically via js/main.js -->
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+          <button class="slider-btn slider-btn-next" aria-label="السابق">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <div class="slider-dots" id="portfolio-slider-dots"></div>
+          <button class="slider-btn slider-btn-prev" aria-label="التالي">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         ABOUT SECTION ("من أنا")
+         ======================== -->
+    <section class="about" id="about">
+      <div class="container-sm">
+        <div class="about-card glass-card reveal">
+          <div class="about-card-glow"></div>
+          <div class="about-grid">
+            <!-- Bio Information -->
+            <div class="about-bio">
+              <div>
+                <span class="section-label">عن الاستشاري</span>
+                <h2 class="section-title">من أنا</h2>
+                <h3 class="about-name">أحمد أبو عامر</h3>
+              </div>
+              <p class="about-text">
+                استشاري خدمات إلكترونية بخبرة أكثر من 5 سنوات في مجال إدخال البيانات، تطوير المتاجر الرقمية، والتسويق
+                الإلكتروني. اشتغلت على مشاريع متنوعة وساعدت شركات وأفراد يبنوا حضور رقمي قوي ويحققوا نتائج ملموسة.
+              </p>
+              <p class="about-text">
+                أهتم بالتفاصيل وأحب أقدم حلول عملية ومرتبة، والأهم عندي إن الخدمة ما تكون مجرد تنفيذ، بل تعكس هوية
+                مشروعك وتوصل رسالتك بشكل احترافي. إلى جانب خبرتي الشخصية، أعمل مع فريق مختص من المصممين والمبرمجين
+                والمسوقين لتقديم خدمات متكاملة.
+              </p>
+              <!-- Service Tags -->
+              <div class="service-tags">
+                <span class="service-tag">تطوير المتاجر الرقمية</span>
+                <span class="service-tag">التسويق الإلكتروني</span>
+                <span class="service-tag">تصميم جرافيك وإنتاج مرئي</span>
+                <span class="service-tag">حلول برمجية</span>
+                <span class="service-tag">إدخال البيانات</span>
+              </div>
+            </div>
+
+            <!-- About Image -->
+            <div class="about-img-wrapper">
+              <div class="about-img-frame">
+                <div class="about-img-inner">
+                  <img src="assets/personal/about-me.png" alt="أحمد أبو عامر - استشاري خدمات إلكترونية" />
+                  <div class="about-img-vignette"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         SERVICES SECTION ("خدماتي")
+         Interactive Cyber-Cyan Accordion Grid
+         ======================== -->
+    <section class="services" id="services">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="services-header reveal">
+          <div class="services-header-text">
+            <span class="section-label">مجالات العمل والخبرة</span>
+            <h2 class="section-title">خدماتي</h2>
+            <p class="section-subtitle">حلول رقمية وإبداعية متكاملة مصممة خصيصاً لتطوير أعمالك وتعزيز تواجدك الرقمي بأعلى معايير الاحترافية</p>
+          </div>
+        </div>
+
+        <!-- 4-Card Services Grid -->
+        <div class="services-grid reveal">
+
+          <!-- Category 1: مجال تصميم الجرافيك والإنتاج المرئي -->
+          <div class="service-card glass-card active" data-category="graphic" tabindex="0" role="button" aria-expanded="true">
+            <div class="service-card-top">
+              <div class="service-icon-box">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <span class="service-count-badge">9 خدمات</span>
+            </div>
+            <div class="service-card-content">
+              <h3 class="service-card-title">مجال تصميم الجرافيك والإنتاج المرئي</h3>
+              <p class="service-card-desc">هويات بصرية استثنائية، واجهات رقمية جذابة، ومحتوى إعلاني حركي يصنع فارقاً حقيقياً لعلامتك.</p>
+            </div>
+            <div class="service-card-footer">
+              <span class="service-toggle-text">الخدمات المتاحة</span>
+              <span class="service-toggle-arrow">∧</span>
+            </div>
+            <div class="service-accordion-drawer">
+              <div class="service-pills-list">
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم واجهات التطبيقات والمواقع (UI Design)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم موشن جرافيك (Motion Graphics)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم تغليف المنتجات (Packaging Design)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم البروشورات والكتيبات التعريفية</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم البانرات الدعائية والإعلانات الخارجية</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>إنتاج فيديوهات إعلانية ودعائية</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم الشعارات والهوية البصرية</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم الريلر (Reels) للسوشيال ميديا</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم إعلانات السوشيال ميديا (بوستات، قصص، صور)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: تصميم المتاجر الإلكترونية -->
+          <div class="service-card glass-card" data-category="ecommerce" tabindex="0" role="button" aria-expanded="false">
+            <div class="service-card-top">
+              <div class="service-icon-box">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <span class="service-count-badge">4 منصات</span>
+            </div>
+            <div class="service-card-content">
+              <h3 class="service-card-title">تصميم المتاجر الإلكترونية</h3>
+              <p class="service-card-desc">بناء وتجهيز متاجر إلكترونية احترافية على كبرى المنصات لتعزيز مبيعاتك وتسهيل تجربة العميل.</p>
+            </div>
+            <div class="service-card-footer">
+              <span class="service-toggle-text">الخدمات المتاحة</span>
+              <span class="service-toggle-arrow">∨</span>
+            </div>
+            <div class="service-accordion-drawer">
+              <div class="service-pills-list">
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>متجر على ووردبريس (WooCommerce)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>متجر على شوبيفاي (Shopify)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>متجر على سلة (Salla)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>متجر على زد (Zid)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: البرمجة والتطوير -->
+          <div class="service-card glass-card" data-category="dev" tabindex="0" role="button" aria-expanded="false">
+            <div class="service-card-top">
+              <div class="service-icon-box">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <span class="service-count-badge">8 خدمات</span>
+            </div>
+            <div class="service-card-content">
+              <h3 class="service-card-title">البرمجة والتطوير</h3>
+              <p class="service-card-desc">تطوير حلول برمجية مخصصة، ربط واجهات الـ APIs، وبناء أنظمة رقمية سريعة وآمنة تلبي تطلعاتك.</p>
+            </div>
+            <div class="service-card-footer">
+              <span class="service-toggle-text">الخدمات المتاحة</span>
+              <span class="service-toggle-arrow">∨</span>
+            </div>
+            <div class="service-accordion-drawer">
+              <div class="service-pills-list">
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>ربط الأنظمة عبر واجهات برمجية (API Integration)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تطوير حلول أمنية وحماية البيانات</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تطوير تطبيقات ويب (React, Vue, Angular)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>برمجة مواقع ويب خاصة (Custom Websites)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>برمجة لوحات تحكم وإدارة بيانات (Dashboards)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>برمجة تطبيقات هواتف (iOS / Android)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>برمجة أنظمة إدارة محتوى (CMS) مخصصة</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>أتمتة العمليات التجارية (Automation Scripts)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: إطلاق الحملات والتسويق -->
+          <div class="service-card glass-card" data-category="marketing" tabindex="0" role="button" aria-expanded="false">
+            <div class="service-card-top">
+              <div class="service-icon-box">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <span class="service-count-badge">6 خدمات</span>
+            </div>
+            <div class="service-card-content">
+              <h3 class="service-card-title">إطلاق الحملات والتسويق</h3>
+              <p class="service-card-desc">إدارة حملات تسويقية مدروسة بعناية لاستهداف عملائك المحتملين وتحقيق أعلى عائد استثماري إعلاني.</p>
+            </div>
+            <div class="service-card-footer">
+              <span class="service-toggle-text">الخدمات المتاحة</span>
+              <span class="service-toggle-arrow">∨</span>
+            </div>
+            <div class="service-accordion-drawer">
+              <div class="service-pills-list">
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>كتابة نصوص إعلانية جذابة (Copywriting)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>تصميم محتوى بصري للحملات (صور، فيديو، ريلز، موشن)</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>إعداد خطة تسويقية شاملة للحملة</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>استهداف الجمهور المناسب عبر أدوات التحليل</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>إدارة الميزانية الإعلانية وتحسين الإنفاق</span></div>
+                <div class="service-pill" tabindex="0"><i class="fa-solid fa-check"></i><span>إدارة الحملات على (فيسبوك، إنستغرام، إكس، تيك توك، سناب شات)</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         STATS SECTION ("إنجازاتي")
+         ======================== -->
+    <section class="stats" id="stats">
+      <div class="stats-gradient"></div>
+      <div class="container-sm">
+        <!-- Header -->
+        <div class="stats-header reveal">
+          <span class="section-label">أرقام تتحدث عن التجربة</span>
+          <h2 class="section-title">إنجازاتي</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <!-- Experience: 5+ -->
+          <div class="stat-card glass-card reveal reveal-delay-1">
+            <div class="stat-icon stat-icon-1">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <div class="stat-number" data-target="5" data-suffix="+">0</div>
+            <div class="stat-label">سنوات خبرة</div>
+          </div>
+
+          <!-- Projects: 786+ -->
+          <div class="stat-card glass-card reveal reveal-delay-2">
+            <div class="stat-icon stat-icon-2">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <div class="stat-number" data-target="786" data-suffix="+">0</div>
+            <div class="stat-label">مشروع</div>
+          </div>
+
+          <!-- Clients: 997+ -->
+          <div class="stat-card glass-card reveal reveal-delay-3">
+            <div class="stat-icon stat-icon-3">
+              <i class="fa-solid fa-user-group"></i>
+            </div>
+            <div class="stat-number" data-target="997" data-suffix="+">0</div>
+            <div class="stat-label">عميل</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         TESTIMONIALS SECTION ("آراء العملاء")
+         Responsive 3-Card Carousel with ALL 10 Proof Files
+         ======================== -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="testimonials-header reveal">
+          <span class="section-label">آراء وتجارب العملاء</span>
+          <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
+          <p class="section-subtitle">شهادات حقيقية وتقييمات موثقة عبر محادثات الواتساب من شركاء النجاح</p>
+          <div class="section-divider"></div>
+        </div>
+
+        <!-- Testimonials 3-Card Carousel Slider -->
+        <div class="testimonials-carousel-wrapper slider-wrapper">
+          <div class="testimonials-slider-track">
+
+            <!-- Review 1 (Proof: 1.png) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>ف.ت</span></div>
+                    <div class="testimonial-info">
+                      <h4>أ. فهد التميمي</h4>
+                      <p>متجر إلكتروني - الرياض</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-bag-shopping"></i> تطوير المتاجر</span>
+
+                <p class="testimonial-quote">
+                  "أحمد وفريقه نقلوا متجري لمستوى احترافي كامل، سرعة في التنفيذ واهتمام بكل تفاصيل تجربة المستخدم وزيادة
+                  واضحة في المبيعات."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/1.png"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 1">
+                  <img src="assets/testimonials/1.png" alt="تقييم واتساب 1" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 2 (Proof: 2.png) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>س.ق</span></div>
+                    <div class="testimonial-info">
+                      <h4>م. سارة القحطاني</h4>
+                      <p>مديرة تشغيل - جدة</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-database"></i> تنظيم وإدخال بيانات</span>
+
+                <p class="testimonial-quote">
+                  "دقة متناهية وسرعة فائقة في معالجة آلاف المنتجات بدون أي خطأ، شغل مرتب ويعتمد عليه دائماً في كل
+                  التحديثات."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/2.png"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 2">
+                  <img src="assets/testimonials/2.png" alt="تقييم واتساب 2" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 3 (Proof: 3.png) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>ع.غ</span></div>
+                    <div class="testimonial-info">
+                      <h4>د. عبد الرحمن الغامدي</h4>
+                      <p>مؤسس منصة رقمية - مكة</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-bullhorn"></i> تسويق وحملات</span>
+
+                <p class="testimonial-quote">
+                  "الحملات الإعلانية كانت مدروسة وحققت نتائج قياسية واسترجاع عالي للاستثمار من أول أسبوع، استشارات في
+                  الصميم."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/3.png"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 3">
+                  <img src="assets/testimonials/3.png" alt="تقييم واتساب 3" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 4 (Proof: 4.png) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>خ.ح</span></div>
+                    <div class="testimonial-info">
+                      <h4>أ. خالد الحربي</h4>
+                      <p>مدير تسويق - الدمام</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-palette"></i> جرافيك وإنتاج مرئي</span>
+
+                <p class="testimonial-quote">
+                  "تصاميم الهوية والمحتوى المرئي عكست هوية مشروعنا بفخامة وأبهرت عملاءنا، لمسات إبداعية تصنع الفارق
+                  دائماً."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/4.png"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 4">
+                  <img src="assets/testimonials/4.png" alt="تقييم واتساب 4" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 5 (Proof: 5.png) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>م.ش</span></div>
+                    <div class="testimonial-info">
+                      <h4>م. مريم الشهري</h4>
+                      <p>متجر براند كوزمتك - الخبر</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-laptop-code"></i> ربط وبوابات دفع</span>
+
+                <p class="testimonial-quote">
+                  "التجاوب السريع والحلول الذكية في ربط شركات الشحن والدفع سهلت علينا إدارة الطلبات بشكل لا يصدق، شكراً
+                  لك."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/5.png"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 5">
+                  <img src="assets/testimonials/5.png" alt="تقييم واتساب 5" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 6 (Proof: 6.png) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>ع.ع</span></div>
+                    <div class="testimonial-info">
+                      <h4>أ. عمر العتيبي</h4>
+                      <p>مؤسسة تجارية - الطائف</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-bag-shopping"></i> تطوير سلة وزد</span>
+
+                <p class="testimonial-quote">
+                  "خدمة راقية جداً وأسلوب احترافي في التعامل، تسليم قبل الموعد ودعم فني مستمر بعد انتهاء المشروع."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/6.png"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 6">
+                  <img src="assets/testimonials/6.png" alt="تقييم واتساب 6" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 7 (Proof: 7.png) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>ن.د</span></div>
+                    <div class="testimonial-info">
+                      <h4>أ. ناصر الدوسري</h4>
+                      <p>ريادي أعمال - الأحساء</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-chart-line"></i> استشارات رقمية</span>
+
+                <p class="testimonial-quote">
+                  "وفر علينا الكثير من التكاليف بخطوات عملية وتوصيات مباشرة كانت سبباً في نجاح إطلاق المشروع الرقمي."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/7.png"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 7">
+                  <img src="assets/testimonials/7.png" alt="تقييم واتساب 7" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 8 (Proof: 8.webp) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>هـ.ز</span></div>
+                    <div class="testimonial-info">
+                      <h4>م. هشام الزهراني</h4>
+                      <p>مدير تقنية - أبها</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-code"></i> تكامل وبرمجة مخصصة</span>
+
+                <p class="testimonial-quote">
+                  "كود نظيف وأداء ممتاز وتكامل سلس مع كل الأنظمة بدون أي تعقيد. تجربة عمل متكاملة تستحق كل التقدير."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/8.webp"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 8">
+                  <img src="assets/testimonials/8.webp" alt="تقييم واتساب 8" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 9 (Proof: 9.webp) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>ر.م</span></div>
+                    <div class="testimonial-info">
+                      <h4>أ. ريم المطيري</h4>
+                      <p>متجر عبايات فاخرة - القصيم</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-bag-shopping"></i> تجهيز متجر كامل</span>
+
+                <p class="testimonial-quote">
+                  "التنسيق وترتيب المنتجات وتصميم البانرات كان غاية في الروعة، زاد ثقة العملاء وزادت الطلبات بشكل
+                  ملحوظ."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/9.webp"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 9">
+                  <img src="assets/testimonials/9.webp" alt="تقييم واتساب 9" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 10 (Proof: 10.webp) -->
+            <div class="testimonial-card glass-card">
+              <div>
+                <div class="testimonial-header">
+                  <div class="testimonial-user">
+                    <div class="testimonial-avatar"><span>ط.خ</span></div>
+                    <div class="testimonial-info">
+                      <h4>أ. طارق الخالدي</h4>
+                      <p>شركة تجارية عامة - حائل</p>
+                    </div>
+                  </div>
+                  <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> موثق</span>
+                </div>
+
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <span class="testimonial-service-tag"><i class="fa-solid fa-bullhorn"></i> خطة تسويق وإعلانات</span>
+
+                <p class="testimonial-quote">
+                  "أفضل من تعاملت معه في الحملات والاستشارات الرقمية، وضوح تام في التقارير واهتمام حقيقي بنجاح العميل."
+                </p>
+              </div>
+
+              <div class="testimonial-proof-container">
+                <div class="testimonial-proof-frame" data-full="assets/testimonials/10.webp"
+                  data-caption="محادثة واتساب موثقة - تجربة العميل 10">
+                  <img src="assets/testimonials/10.webp" alt="تقييم واتساب 10" />
+                  <div class="testimonial-proof-overlay">
+                    <span class="proof-label"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> إثبات
+                      الواتساب</span>
+                    <span class="proof-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="testimonials-controls">
+          <button class="testimonials-btn testimonials-btn-next" aria-label="السابق">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <div class="testimonials-dots"></div>
+          <button class="testimonials-btn testimonials-btn-prev" aria-label="التالي">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Zoom Lightbox Modal -->
+    <div id="testimonial-lightbox" class="lightbox-modal">
+      <div class="lightbox-wrapper">
+        <button class="lightbox-close" type="button" aria-label="إغلاق">&times;</button>
+        <div class="lightbox-img-box">
+          <img id="lightbox-img" src="" alt="معاينة إثبات التقييم" />
+        </div>
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+      </div>
+    </div>
+
+    <!-- ========================
+         CTA SECTION
+         ======================== -->
+    <section class="cta-section" id="contact">
+      <div class="container-md">
+        <div class="cta-card glass-card reveal">
+          <h2 class="cta-title">جاهز نبدأ مشروعك القادم؟</h2>
+          <p class="cta-text">
+            سواء كنت تبحث عن تطوير متجرك الرقمي، أو حلول تسويقية احترافية لحملاتك الإعلانية، يسعدني التعاون معك لتحويل
+            أفكارك لواقع مبهر.
+          </p>
+          <div class="cta-buttons">
+            <!-- WhatsApp Button -->
+            <a class="btn-whatsapp" href="https://wa.me/970597632531" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
+              <span>تواصل عبر واتساب</span>
+            </a>
+            <!-- Email Button -->
+            <a class="btn-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmed.543asa@gmail.com"
+              target="_blank" rel="noopener noreferrer">
+              <i class="fa-regular fa-envelope"></i>
+              <span>إرسال بريد إلكتروني</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================
+       FOOTER
+       ======================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <!-- Brand & Dynamic Year -->
+      <div class="footer-brand">
+        <span class="footer-brand-name">أحمد أبو عامر</span>
+        <span>•</span>
+        <span>جميع الحقوق محفوظة © <span id="current-year"></span></span>
+      </div>
+
+      <!-- Social Links -->
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/a7med.11.12?cplk=MXRiYWZ6eGVqNXN6ZA%3D%3D&utm_source=qr"
+          aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a class="back-to-top" href="#hero" aria-label="للأعلى">
+    <span>للأعلى</span>
+    <i class="fa-solid fa-arrow-up" style="font-size: 0.65rem;"></i>
+  </a>
+
+  <!-- Main JavaScript -->
+  <script src="js/main.js"></script>
+
+  <!-- Script لتأكيد إضافة الـ active لعناصر الـ Reveal عند التحميل -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealItems = document.querySelectorAll(".reveal-item");
+      setTimeout(() => {
+        revealItems.forEach((item) => {
+          item.classList.add("active");
+        });
+      }, 100);
+    });
+  </script>
+</body>
+
+</html>
