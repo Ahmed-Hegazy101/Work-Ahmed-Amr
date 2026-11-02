@@ -618,6 +618,7 @@ button {
   width: 100%;
   padding: 0.5rem 0;
   touch-action: pan-y;
+  -webkit-touch-callout: none;
 }
 
 .slider-track {
@@ -654,6 +655,16 @@ button {
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base), opacity 0.3s ease;
   will-change: transform;
   transform: translate3d(0, 0, 0);
+}
+
+.work-card,
+.work-card *,
+.testimonial-card,
+.testimonial-card * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .work-card:hover {

@@ -208,6 +208,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let prevTranslate = 0;
     let dragMoved = false;
     let justDragged = false;
+    let touchTracking = false;
+    let touchDirectionDecided = false;
+    let isHorizontalTouch = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
     function getCards() {
       if (typeof getVisibleCards === 'function') {
@@ -232,6 +237,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function clampSlideIndex(index) {
       const maxIndex = Math.max(0, totalSlides - 1);
       return Math.max(0, Math.min(index, maxIndex));
+    }
+
+    function getStepOffset(cards) {
+      if (cards.length > 1) {
+        return Math.abs(cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left);
+      }
+
+      const card = cards[0];
+      if (!card) return 0;
+      const style = window.getComputedStyle(card);
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 20;
+      return card.offsetWidth + gap + (parseFloat(style.marginLeft) || 0) + (parseFloat(style.marginRight) || 0);
     }
 
     function updateLayout(animate = true) {
@@ -259,29 +276,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function updatePosition(animate = true) {
+    function updatePosition(animate = true, transition = 'transform 0.35s ease-out') {
       const cards = getCards();
       if (cards.length === 0) return;
 
-      track.style.transition = animate ? 'transform 0.35s ease-out' : 'none';
+      track.style.transition = animate ? transition : 'none';
 
       const gap = parseFloat(window.getComputedStyle(track).gap) || 20;
       const wrapperWidth = wrapper.offsetWidth;
       const firstCard = cards[0];
       const cardWidth = firstCard ? firstCard.offsetWidth : (wrapperWidth - (cardsPerView - 1) * gap) / cardsPerView;
 
-      const stepOffset = cardWidth + gap;
+      const stepOffset = getStepOffset(cards) || cardWidth + gap;
       let offset = currentSlide * stepOffset;
-
-      const totalContentWidth = cards.length * cardWidth + (cards.length - 1) * gap;
-      const maxScroll = Math.max(0, totalContentWidth - wrapperWidth);
-
-      if (offset > maxScroll) {
-        offset = maxScroll;
-      }
-      if (offset < 0) {
-        offset = 0;
-      }
+      const maxScroll = Math.max(0, (totalSlides - 1) * stepOffset);
+      offset = Math.max(0, Math.min(maxScroll, offset));
 
       track.style.transform = `translate3d(${offset}px, 0, 0)`;
       currentTranslate = offset;
@@ -295,14 +304,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function next() {
+    function next(transition) {
       currentSlide = clampSlideIndex(currentSlide + 1);
-      updatePosition(true);
+      updatePosition(true, transition);
     }
 
-    function prev() {
+    function prev(transition) {
       currentSlide = clampSlideIndex(currentSlide - 1);
-      updatePosition(true);
+      updatePosition(true, transition);
     }
 
     function reset() {
@@ -325,6 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function onPointerDown(e) {
+      if (e.pointerType === 'touch') return;
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       if (e.target instanceof Element && e.target.closest('.work-card-zoom-btn, .testimonial-proof-frame')) return;
       isDragging = true;
@@ -417,10 +427,90 @@ document.addEventListener('DOMContentLoaded', () => {
       updatePosition(true);
     }
 
+    function onTouchStart(e) {
+      if (e.touches.length !== 1) return;
+      touchTracking = true;
+      touchDirectionDecided = false;
+      isHorizontalTouch = false;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      prevTranslate = currentTranslate;
+    }
+
+    function onTouchMove(e) {
+      if (!touchTracking || e.touches.length !== 1) return;
+
+      const deltaX = e.touches[0].clientX - touchStartX;
+      const deltaY = e.touches[0].clientY - touchStartY;
+      if (!touchDirectionDecided) {
+        if (Math.abs(deltaY) > 8 && Math.abs(deltaY) > Math.abs(deltaX)) {
+          touchDirectionDecided = true;
+          touchTracking = false;
+          return;
+        }
+        if (Math.abs(deltaX) > 8 && Math.abs(deltaX) > Math.abs(deltaY)) {
+          touchDirectionDecided = true;
+          isHorizontalTouch = true;
+          track.classList.add('dragging');
+          track.style.transition = 'none';
+        }
+      }
+
+      if (!isHorizontalTouch) return;
+
+      const cards = getCards();
+      const stepOffset = getStepOffset(cards);
+      const maxScroll = Math.max(0, (totalSlides - 1) * stepOffset);
+      const limitedTranslate = Math.max(
+        prevTranslate - stepOffset,
+        Math.min(prevTranslate + stepOffset, prevTranslate + deltaX)
+      );
+      const newTranslate = Math.max(0, Math.min(maxScroll, limitedTranslate));
+      track.style.transform = `translate3d(${newTranslate}px, 0, 0)`;
+    }
+
+    function onTouchEnd(e) {
+      if (!touchTracking && !isHorizontalTouch) return;
+      touchTracking = false;
+      track.classList.remove('dragging');
+
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      if (isHorizontalTouch) {
+        justDragged = Math.abs(deltaX) > 8;
+        if (justDragged) setTimeout(() => { justDragged = false; }, 120);
+
+        const touchTransition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+        if (deltaX > 30) {
+          next(touchTransition);
+        } else if (deltaX < -30) {
+          prev(touchTransition);
+        } else {
+          updatePosition(true, touchTransition);
+        }
+      }
+
+      isHorizontalTouch = false;
+      touchDirectionDecided = false;
+    }
+
+    function onTouchCancel() {
+      if (!touchTracking && !isHorizontalTouch) return;
+      touchTracking = false;
+      isHorizontalTouch = false;
+      touchDirectionDecided = false;
+      justDragged = false;
+      track.classList.remove('dragging');
+      updatePosition(true, 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)');
+    }
+
     track.addEventListener('pointerdown', onPointerDown);
     track.addEventListener('pointermove', onPointerMove);
     track.addEventListener('pointerup', onPointerUp);
     track.addEventListener('pointercancel', onPointerCancel);
+    wrapper.addEventListener('touchstart', onTouchStart, { passive: true });
+    wrapper.addEventListener('touchmove', onTouchMove, { passive: true });
+    wrapper.addEventListener('touchend', onTouchEnd, { passive: true });
+    wrapper.addEventListener('touchcancel', onTouchCancel, { passive: true });
 
     track.querySelectorAll('img').forEach(img => {
       img.style.pointerEvents = 'none';
