@@ -1,19 +1,8 @@
-/* =========================================
-   Ahmed Abu Amer - Portfolio JS
-   Vanilla JavaScript - Zero Dependencies
-   ========================================= */
+/* Portfolio behavior */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* --- Helper: Get Client Coordinates from Event --- */
-  function getClientX(e) {
-    return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-  }
-  function getClientY(e) {
-    return e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-  }
-
-  /* --- 1. Top Navbar Dynamic ScrollSpy & Immediate Click Highlight --- */
+  /* Navigation */
   const sectionIds = ['hero', 'portfolio', 'about', 'services', 'stats', 'testimonials', 'contact'];
   const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
   const desktopNavLinks = document.querySelectorAll('.nav-links a');
@@ -41,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // IntersectionObserver for all target sections
   const scrollspyObserver = new IntersectionObserver((entries) => {
     if (isManualScroll) return;
 
@@ -57,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(section => scrollspyObserver.observe(section));
 
-  // Bottom of page detection to ensure #contact highlights smoothly
   window.addEventListener('scroll', () => {
     if (isManualScroll) return;
 
@@ -66,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  /* --- 2. Smooth Scroll for Navbar Links (Immediate Active on Click) --- */
+  /* Smooth scrolling */
   const allNavAnchors = document.querySelectorAll('.nav-links a, .mobile-nav-link, .btn-works, a[href^="#"]');
 
   allNavAnchors.forEach(anchor => {
@@ -101,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* --- 3. Mobile Navigation Drawer --- */
+  /* Mobile menu */
   const menuBtn = document.querySelector('.nav-menu-btn');
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileNavClose = document.querySelector('.mobile-nav-close');
@@ -124,16 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavClose.addEventListener('click', closeMobileNav);
   }
 
-  // Auto-close mobile navigation drawer when any link inside it is clicked
   mobileNavLinks.forEach(link => {
     link.addEventListener('click', () => {
       closeMobileNav();
     });
   });
 
-  /* --- 4. Dynamic Portfolio Cards Data & Generation --- */
+  /* Portfolio data */
   const portfolioItems = [
-    // --- Stores (تطوير المتاجر) ---
+    // Store projects
     { id: 1, category: 'store', categoryName: 'تطوير المتاجر', badge: 'سلة وزد', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر إلكتروني متكامل', subtitle: 'تجهيز سلة وزد وشوبيفاي', image: 'assets/portfolio/stores/1.webp' },
     { id: 2, category: 'store', categoryName: 'تطوير المتاجر', badge: 'بوابات دفع', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'منصة تجارة وبوابة دفع', subtitle: 'واجهة مستخدم وتجربة شراء سلسة', image: 'assets/portfolio/stores/2.webp' },
     { id: 3, category: 'store', categoryName: 'تطوير المتاجر', badge: 'سلة برو', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر سلة رقمي', subtitle: 'تجهيز منتجات وفلاتر متقدمة', image: 'assets/portfolio/stores/3.webp' },
@@ -150,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 14, category: 'store', categoryName: 'تطوير المتاجر', badge: 'محاصيل بن', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'متجر قهوة ومحاصيل مختصة', subtitle: 'بانرات احترافية وتصنيف النكهات', image: 'assets/portfolio/stores/14.webp' },
     { id: 15, category: 'store', categoryName: 'تطوير المتاجر', badge: 'تحسين التحويل CRO', badgeStyle: 'background: rgba(8, 145, 178, 0.92);', title: 'تطوير وتحديث متجر شامل', subtitle: 'مضاعفة المبيعات وتسهيل الدفع', image: 'assets/portfolio/stores/15.webp' },
 
-    // --- Graphics (جرافيك وإنتاج مرئي) ---
+    // Graphic projects
     { id: 16, category: 'graphic', categoryName: 'جرافيك وإنتاج مرئي', badge: 'إنتاج مرئي', badgeStyle: 'background: rgba(220, 38, 38, 0.92);', title: 'تصاميم بصرية احترافية', subtitle: 'محتوى تفاعلي وإعلاني جاذب', image: 'assets/portfolio/graphics/1.webp' },
     { id: 17, category: 'graphic', categoryName: 'جرافيك وإنتاج مرئي', badge: 'هوية بصرية', badgeStyle: 'background: rgba(220, 38, 38, 0.92);', title: 'هويات بصرية ومطبوعات', subtitle: 'براندينج وهوية متكاملة للشركات', image: 'assets/portfolio/graphics/2.webp' },
     { id: 18, category: 'graphic', categoryName: 'جرافيك وإنتاج مرئي', badge: 'سوشيال ميديا', badgeStyle: 'background: rgba(220, 38, 38, 0.92);', title: 'بوسترات منصات التواصل', subtitle: 'تصاميم إنستقرام وإكس وتيك توك', image: 'assets/portfolio/graphics/3.webp' },
@@ -165,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 27, category: 'graphic', categoryName: 'جرافيك وإنتاج مرئي', badge: 'بروفايل شركات', badgeStyle: 'background: rgba(220, 38, 38, 0.92);', title: 'ملف تعريفي Company Profile', subtitle: 'إخراج احترافي لتقديم الأعمال', image: 'assets/portfolio/graphics/12.webp' },
     { id: 28, category: 'graphic', categoryName: 'جرافيك وإنتاج مرئي', badge: 'إنفوجرافيك', badgeStyle: 'background: rgba(220, 38, 38, 0.92);', title: 'إنفوجرافيك وشروحات تقنية', subtitle: 'تبسيط البيانات المعقدة بصرياً', image: 'assets/portfolio/graphics/13.webp' },
 
-    // --- Dev (برمجة وتطوير) ---
+    // Development projects
     { id: 29, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'حلول برمجية', badgeStyle: 'background: rgba(16, 185, 129, 0.92);', title: 'أنظمة رقمية متقدمة', subtitle: 'بنية برمجية قوية وأداء فائق', image: 'assets/portfolio/dev/1.jpg' },
     { id: 30, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'أتمتة بيانات', badgeStyle: 'background: rgba(16, 185, 129, 0.92);', title: 'أتمتة وإدارة بيانات ضخمة', subtitle: 'معالجة وتنظيف ومزامنة تلقائية', image: 'assets/portfolio/dev/2.png' },
     { id: 31, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'لوحات تحكم', badgeStyle: 'background: rgba(16, 185, 129, 0.92);', title: 'برمجة لوحات تحكم مخصصة', subtitle: 'Dashboard متابعة مبيعات وتقارير', image: 'assets/portfolio/dev/3.png' },
@@ -177,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 37, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'نظام CRM', badgeStyle: 'background: rgba(16, 185, 129, 0.92);', title: 'إدارة علاقات العملاء CRM', subtitle: 'تنظيم الصفقات والمحادثات', image: 'assets/portfolio/dev/9.png' },
     { id: 38, category: 'dev', categoryName: 'برمجة وتطوير', badge: 'أدوات تقنية', badgeStyle: 'background: rgba(16, 185, 129, 0.92);', title: 'كود مخصص وأدوات تفاعلية', subtitle: 'حلول تقنية خفيفة وسريعة', image: 'assets/portfolio/dev/10.png' },
 
-    // --- Marketing (تسويق وحملات) ---
+    // Marketing projects
     { id: 39, category: 'marketing', categoryName: 'تسويق وحملات', badge: 'إعلانات ممولة', badgeStyle: 'background: rgba(217, 119, 6, 0.92);', title: 'إدارة حملات ممولة وسناب', subtitle: 'استهداف دقيق وأعلى عائد إعلاني', image: 'assets/portfolio/marketing/1.png' },
     { id: 40, category: 'marketing', categoryName: 'تسويق وحملات', badge: 'خطة نمو', badgeStyle: 'background: rgba(217, 119, 6, 0.92);', title: 'خطة تسويقية متكاملة', subtitle: 'مضاعفة المبيعات وتوسيع الشريحة', image: 'assets/portfolio/marketing/2.png' },
     { id: 41, category: 'marketing', categoryName: 'تسويق وحملات', badge: 'إطلاق منتج', badgeStyle: 'background: rgba(217, 119, 6, 0.92);', title: 'حملة إطلاق موسمية كبرى', subtitle: 'توليد اهتمام مسبق ومبيعات فورية', image: 'assets/portfolio/marketing/3.jpg' },
@@ -196,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 54, category: 'marketing', categoryName: 'تسويق وحملات', badge: 'وعي بالعلامة', badgeStyle: 'background: rgba(217, 119, 6, 0.92);', title: 'حملة بناء الوعي والانتشار', subtitle: 'ترسيخ اسم البراند في السوق', image: 'assets/portfolio/marketing/16.jpg' }
   ];
 
-  /* --- Reusable Isolated Slider Factory (Hardware-Accelerated with Touch Intent Detection) --- */
+  /* Slider behavior */
   function initSlider(config) {
     const {
       wrapper,
@@ -211,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!wrapper || !track) return null;
 
     let currentSlide = 0;
-    let totalPages = 1;
+    let totalSlides = 1;
     let cardsPerView = 3;
     let isDragging = false;
     let startX = 0;
@@ -237,13 +223,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return 3;
     }
 
+    function clampSlideIndex(index) {
+      const maxIndex = Math.max(0, totalSlides - 1);
+      return Math.max(0, Math.min(index, maxIndex));
+    }
+
     function updateLayout(animate = true) {
       cardsPerView = calculateCardsPerView();
       const cards = getCards();
-      totalPages = Math.max(1, Math.ceil(cards.length / cardsPerView));
-
-      if (currentSlide >= totalPages) currentSlide = totalPages - 1;
-      if (currentSlide < 0) currentSlide = 0;
+      totalSlides = Math.max(1, cards.length - cardsPerView + 1);
+      currentSlide = clampSlideIndex(currentSlide);
 
       renderDots();
       updatePosition(animate);
@@ -252,12 +241,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderDots() {
       if (!dotsContainer) return;
       dotsContainer.innerHTML = '';
-      for (let i = 0; i < totalPages; i++) {
+      for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('span');
         dot.className = `${dotClass} ${i === currentSlide ? 'active' : ''}`;
         dot.setAttribute('data-index', i);
         dot.addEventListener('click', () => {
-          currentSlide = i;
+          currentSlide = clampSlideIndex(i);
           updatePosition(true);
         });
         dotsContainer.appendChild(dot);
@@ -268,21 +257,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const cards = getCards();
       if (cards.length === 0) return;
 
-      track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+      track.style.transition = animate ? 'transform 0.35s ease-out' : 'none';
 
       const gap = parseFloat(window.getComputedStyle(track).gap) || 20;
       const wrapperWidth = wrapper.offsetWidth;
       const firstCard = cards[0];
       const cardWidth = firstCard ? firstCard.offsetWidth : (wrapperWidth - (cardsPerView - 1) * gap) / cardsPerView;
 
-      // RTL positive translation shifts track left-to-right to reveal subsequent cards
-      const stepOffset = (cardWidth + gap) * cardsPerView;
+      const stepOffset = cardWidth + gap;
       let offset = currentSlide * stepOffset;
 
       const totalContentWidth = cards.length * cardWidth + (cards.length - 1) * gap;
       const maxScroll = Math.max(0, totalContentWidth - wrapperWidth);
 
-      // Smooth bounds snapping
       if (offset > maxScroll) {
         offset = maxScroll;
       }
@@ -303,20 +290,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function next() {
-      if (currentSlide < totalPages - 1) {
-        currentSlide++;
-      } else {
-        currentSlide = 0;
-      }
+      currentSlide = clampSlideIndex(currentSlide + 1);
       updatePosition(true);
     }
 
     function prev() {
-      if (currentSlide > 0) {
-        currentSlide--;
-      } else {
-        currentSlide = totalPages - 1;
-      }
+      currentSlide = clampSlideIndex(currentSlide - 1);
       updatePosition(true);
     }
 
@@ -325,7 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateLayout(true);
     }
 
-    // Prev / Next button listeners
     if (prevBtn) {
       prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -340,122 +318,107 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Touch & Mouse Drag handlers with explicit horizontal vs vertical intent detection
-    function onDragStart(e) {
+    function onPointerDown(e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      if (e.target instanceof Element && e.target.closest('.work-card-zoom-btn, .testimonial-proof-frame')) return;
       isDragging = true;
       dragMoved = false;
       dragDirectionDecided = false;
       isHorizontalDrag = false;
-      startX = getClientX(e);
-      startY = getClientY(e);
+      startX = e.clientX;
+      startY = e.clientY;
+      track.setPointerCapture(e.pointerId);
+      track.style.transition = 'none';
     }
 
-    function onDragMove(e) {
+    function onPointerMove(e) {
       if (!isDragging) return;
-      const currentX = getClientX(e);
-      const currentY = getClientY(e);
-      const diffX = currentX - startX;
-      const diffY = currentY - startY;
+      const diffX = e.clientX - startX;
+      const diffY = e.clientY - startY;
 
-      if (e.type.includes('touch')) {
-        if (!dragDirectionDecided) {
-          // If vertical intent dominates, release drag immediately to allow uninterrupted page scroll
-          if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 8) {
-            isDragging = false;
-            dragDirectionDecided = true;
-            track.classList.remove('dragging');
-            track.style.transform = `translate3d(${prevTranslate}px, 0, 0)`;
-            return;
-          }
-          // If horizontal intent dominates, lock onto carousel swipe
-          if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 8) {
-            dragDirectionDecided = true;
-            isHorizontalDrag = true;
-            track.classList.add('dragging');
-          }
+      if (!dragDirectionDecided) {
+        if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 8) {
+          isDragging = false;
+          dragDirectionDecided = true;
+          track.releasePointerCapture(e.pointerId);
+          track.style.transition = 'transform 0.35s ease-out';
+          track.style.transform = `translate3d(${prevTranslate}px, 0, 0)`;
+          return;
         }
-
-        if (!isHorizontalDrag) return;
-
-        // Prevent native vertical scroll lock only when swiping horizontally
-        if (e.cancelable) {
-          e.preventDefault();
-        }
-      } else {
-        // Desktop mouse drag threshold
-        if (Math.abs(diffX) > 5) {
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 8) {
+          dragDirectionDecided = true;
           isHorizontalDrag = true;
           track.classList.add('dragging');
         }
       }
 
-      if (isHorizontalDrag) {
-        dragMoved = true;
-        justDragged = true;
-        track.style.transition = 'none';
+      if (!isHorizontalDrag) return;
 
-        const cards = getCards();
-        const gap = parseFloat(window.getComputedStyle(track).gap) || 20;
-        const wrapperWidth = wrapper.offsetWidth;
-        const firstCard = cards[0];
-        const cardWidth = firstCard ? firstCard.offsetWidth : 300;
-        const totalContentWidth = cards.length * cardWidth + (cards.length - 1) * gap;
-        const maxScroll = Math.max(0, totalContentWidth - wrapperWidth);
+      dragMoved = true;
+      justDragged = true;
 
-        let newTranslate = prevTranslate + diffX;
-        if (newTranslate < 0) {
-          newTranslate = diffX * 0.3; // Gentle resistance at left bound
-        } else if (newTranslate > maxScroll) {
-          newTranslate = maxScroll + (newTranslate - maxScroll) * 0.3; // Resistance at right bound
-        }
+      const cards = getCards();
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 20;
+      const wrapperWidth = wrapper.offsetWidth;
+      const cardWidth = cards[0] ? cards[0].offsetWidth : 300;
+      const totalContentWidth = cards.length * cardWidth + (cards.length - 1) * gap;
+      const maxScroll = Math.max(0, totalContentWidth - wrapperWidth);
+      const maxDragDistance = cardWidth + gap;
 
-        track.style.transform = `translate3d(${newTranslate}px, 0, 0)`;
-      }
+      let newTranslate = prevTranslate + diffX;
+      newTranslate = Math.max(
+        prevTranslate - maxDragDistance,
+        Math.min(prevTranslate + maxDragDistance, newTranslate)
+      );
+      newTranslate = Math.max(0, Math.min(maxScroll, newTranslate));
+
+      track.style.transform = `translate3d(${newTranslate}px, 0, 0)`;
     }
 
-    function onDragEnd(e) {
+    function onPointerUp(e) {
       if (!isDragging && !dragMoved) return;
       isDragging = false;
       track.classList.remove('dragging');
 
       if (dragMoved) {
-        setTimeout(() => {
-          justDragged = false;
-        }, 120);
+        setTimeout(() => { justDragged = false; }, 120);
       } else {
         justDragged = false;
       }
 
       if (!isHorizontalDrag) return;
 
-      const endX = e.type.includes('touch')
-        ? (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : startX)
-        : e.clientX;
-      const diff = endX - startX;
-
-      if (diff < -50) {
+      const diff = e.clientX - startX;
+      if (diff < -40) {
         next();
-      } else if (diff > 50) {
+      } else if (diff > 40) {
         prev();
       } else {
         updatePosition(true);
       }
     }
 
-    // Attach drag listeners
-    track.addEventListener('mousedown', onDragStart);
-    window.addEventListener('mousemove', onDragMove);
-    window.addEventListener('mouseup', onDragEnd);
+    function onPointerCancel() {
+      if (!isDragging && !dragMoved) return;
+      isDragging = false;
+      isHorizontalDrag = false;
+      dragMoved = false;
+      justDragged = false;
+      track.classList.remove('dragging');
+      updatePosition(true);
+    }
 
-    track.addEventListener('touchstart', onDragStart, { passive: true });
-    window.addEventListener('touchmove', onDragMove, { passive: false });
-    window.addEventListener('touchend', onDragEnd);
+    track.addEventListener('pointerdown', onPointerDown);
+    track.addEventListener('pointermove', onPointerMove);
+    track.addEventListener('pointerup', onPointerUp);
+    track.addEventListener('pointercancel', onPointerCancel);
 
     track.querySelectorAll('img').forEach(img => {
-      img.addEventListener('dragstart', (e) => e.preventDefault());
+      img.style.pointerEvents = 'none';
+      img.style.userSelect = 'none';
+      img.setAttribute('draggable', 'false');
     });
 
-    // Horizontal mouse wheel scrolling support
     wrapper.addEventListener('wheel', (e) => {
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 15) {
         e.preventDefault();
@@ -467,7 +430,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, { passive: false });
 
-    // Initial positioning
     updateLayout(false);
 
     return {
@@ -480,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  /* --- 4. Dynamic Portfolio Cards Data & Generation --- */
+  /* Portfolio cards */
   const portfolioTrack = document.getElementById('portfolio-slider-track');
   const portfolioWrapper = document.querySelector('#portfolio .slider-wrapper');
   const portfolioPrevBtn = document.querySelector('#portfolio .slider-btn-prev');
@@ -490,7 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let portfolioSlider = null;
 
-  // Render portfolio cards dynamically into #portfolio-slider-track
   function renderPortfolioCards(items) {
     if (!portfolioTrack) return;
     portfolioTrack.innerHTML = '';
@@ -508,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <i class="fa-solid fa-magnifying-glass-plus"></i>
             <span>تكبير</span>
           </button>
-          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          <img src="${item.image}" alt="${item.title}" loading="lazy" draggable="false" style="pointer-events:none;user-select:none;" />
           <div class="work-card-overlay"></div>
           <div class="work-card-badge" style="${item.badgeStyle || ''}">${item.badge}</div>
           <div class="work-card-info">
@@ -518,7 +479,20 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
+      const zoomButton = card.querySelector('.work-card-zoom-btn');
+      if (zoomButton) {
+        zoomButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (portfolioSlider && portfolioSlider.isJustDragged()) {
+            e.preventDefault();
+            return;
+          }
+          openLightbox(item.image, `${item.title} - ${item.categoryName}`);
+        });
+      }
+
       card.addEventListener('click', (e) => {
+        if (e.target.closest('.work-card-zoom-btn')) return;
         if (portfolioSlider && portfolioSlider.isJustDragged()) {
           e.preventDefault();
           return;
@@ -530,10 +504,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Render cards before initializing slider instance
   renderPortfolioCards(portfolioItems);
 
-  // Initialize Portfolio Slider Instance
+  // Portfolio slider
   portfolioSlider = initSlider({
     wrapper: portfolioWrapper,
     track: portfolioTrack,
@@ -547,7 +520,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Portfolio Category Filtering
+  if (portfolioTrack) {
+    Array.from(portfolioTrack.children).forEach(card => {
+      if (card.getAttribute('data-category') !== 'store') {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+    if (portfolioSlider) portfolioSlider.reset();
+  }
+
+  // Portfolio filters
   filterTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       filterTabs.forEach(t => t.classList.remove('active'));
@@ -571,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* --- 5. Interactive Services Accordion Functionality --- */
+  /* Service accordions */
   const serviceCards = document.querySelectorAll('.service-card');
 
   function openServiceDrawer(card) {
@@ -616,7 +598,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function toggleServiceCard(card) {
     const isCurrentlyActive = card.classList.contains('active');
 
-    // Close other service cards
     serviceCards.forEach(otherCard => {
       if (otherCard !== card && otherCard.classList.contains('active')) {
         closeServiceDrawer(otherCard);
@@ -631,6 +612,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   serviceCards.forEach(card => {
+    card.classList.remove('active');
+    card.setAttribute('aria-expanded', 'false');
+    const drawer = card.querySelector('.service-accordion-drawer');
+    const arrow = card.querySelector('.service-toggle-arrow');
+    if (drawer) {
+      drawer.style.maxHeight = '0px';
+      drawer.style.opacity = '0';
+    }
+    if (arrow) arrow.textContent = '∨';
+
     card.addEventListener('click', (e) => {
       if (e.target.closest('.service-pill')) return;
       toggleServiceCard(card);
@@ -643,16 +634,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleServiceCard(card);
       }
     });
-
-    if (card.classList.contains('active')) {
-      const drawer = card.querySelector('.service-accordion-drawer');
-      const arrow = card.querySelector('.service-toggle-arrow');
-      if (drawer) {
-        drawer.style.maxHeight = 'none';
-        drawer.style.opacity = '1';
-      }
-      if (arrow) arrow.textContent = '∧';
-    }
   });
 
   const servicePills = document.querySelectorAll('.service-pill');
@@ -671,7 +652,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* --- 6. Testimonials 3-Card Carousel (Desktop 3, Tablet 2, Mobile 1) --- */
+  /* Testimonials slider */
   const testimonialsTrack = document.querySelector('#testimonials .testimonials-slider-track');
   const testimonialsWrapper = document.querySelector('#testimonials .testimonials-carousel-wrapper');
   const testimonialsPrevBtn = document.querySelector('#testimonials .testimonials-btn-prev');
@@ -691,25 +672,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* --- 7. Window Resize Handler for Both Sliders --- */
+  /* Slider resize */
   window.addEventListener('resize', () => {
     if (portfolioSlider) portfolioSlider.updateLayout(false);
     if (testimonialsSlider) testimonialsSlider.updateLayout(false);
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-  /* --- 8. Stats Dynamic Counter Animation --- */
+  /* Stats counters */
   const statNumbers = document.querySelectorAll('.stat-number');
   let statsTriggered = false;
 
@@ -753,7 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* --- 9. Unified Lightbox Modal (For Portfolio & Testimonials) --- */
+  /* Lightbox */
   const lightboxModal = document.getElementById('testimonial-lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
@@ -779,7 +748,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Hook testimonial proof frame clicks into the unified openLightbox function
   const proofFrames = document.querySelectorAll('.testimonial-proof-frame');
   proofFrames.forEach(frame => {
     frame.addEventListener('click', (e) => {
@@ -815,7 +783,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* --- 10. General Scroll Reveal Observer --- */
+  /* Scroll reveals */
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -831,7 +799,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  /* --- 11. Back to Top Button --- */
+  /* Back to top */
   const backToTop = document.querySelector('.back-to-top');
   if (backToTop) {
     window.addEventListener('scroll', () => {
@@ -848,7 +816,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* --- 12. Dynamic Footer Current Year --- */
+  /* Footer year */
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();

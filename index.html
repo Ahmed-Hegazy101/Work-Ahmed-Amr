@@ -6,39 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>أحمد أبو عامر | استشاري خدمات إلكترونية</title>
   <link rel="icon" type="image/png" href="assets/personal/Avater.png" />
-  <!-- Google Fonts: Cairo, Tajawal & Plus Jakarta Sans -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900;1000&family=Tajawal:wght@800;900&family=Plus+Jakarta+Sans:wght@500;700&display=swap"
     rel="stylesheet" />
 
-  <!-- FontAwesome Icons -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Main Stylesheet -->
+  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-  <!-- خلفية النقاط والتوهج السماوي -->
+  <!-- Background effects -->
   <div class="bg-grid"></div>
   <div class="bg-glow"></div>
 
-  <!-- ========================
-       TOP NAVBAR (Unified Glass Curtain Navbar)
-       ======================== -->
+  <!-- Navigation -->
   <header class="header">
     <div class="nav-container glass-navbar reveal-item delay-1">
 
-      <!-- زر اللوجو والاسم (على اليمين في RTL) -->
       <a href="#hero" class="nav-brand">
         <img src="assets/personal/Avater.png" alt="أحمد أبو عامر" />
         <span>أحمد أبو عامر</span>
       </a>
 
-      <!-- قائمة التنقل (على اليسار في RTL) -->
       <nav class="nav-links">
         <a href="#hero" class="active">الرئيسية</a>
         <a href="#portfolio">أعمالي</a>
@@ -49,7 +45,6 @@
         <a href="#contact">تواصل معي</a>
       </nav>
 
-      <!-- زر القائمة لشاشات الجوال -->
       <button class="nav-menu-btn" type="button" aria-label="القائمة">
         <i class="fa-solid fa-bars"></i>
       </button>
@@ -57,7 +52,7 @@
     </div>
   </header>
 
-  <!-- Mobile Navigation Overlay -->
+  <!-- Mobile navigation -->
   <div class="mobile-nav">
     <button class="mobile-nav-close" type="button" aria-label="إغلاق">
       <i class="fa-solid fa-xmark"></i>
@@ -71,23 +66,16 @@
     <a class="mobile-nav-link" href="#contact">تواصل معي</a>
   </div>
 
-  <!-- ========================
-       MAIN CONTENT
-       ======================== -->
   <main>
 
-    <!-- ========================
-         HERO SECTION (Custom Cyberpunk Cyan Hero)
-         ======================== -->
+    <!-- Hero section -->
     <section id="hero" class="hero">
       <div class="hero-container">
-        <!-- النص العريض "خلّ إبداعك يتكلم." مع فاصل مريح بين السطرين -->
         <div class="hero-phrase reveal-item delay-2">
           <span class="l1">خلّ إبداعك</span>
           <span class="l2">يتكلم.</span>
         </div>
 
-        <!-- الأفاتار نازل لأسفل بحيث يغطي فقط الجزء السفلي البسيط من "يتكلم." -->
         <div class="avatar-area reveal-item delay-3">
           <div class="avatar-rings"></div>
           <div class="hero-avatar">
@@ -95,7 +83,6 @@
           </div>
         </div>
 
-        <!-- الشريط السفلي (الاسم، الوظيفة، زر أعمالي) -->
         <div class="hero-bottom reveal-item delay-4">
           <div class="hero-meta">
             <h2>أحمد أبو عامر</h2>
@@ -110,12 +97,10 @@
       </div>
     </section>
 
-    <!-- ========================
-         PORTFOLIO SECTION ("أعمالي")
-         ======================== -->
+    <!-- Portfolio section -->
     <section class="portfolio" id="portfolio">
       <div class="container">
-        <!-- Header & Category Filters -->
+        <!-- Portfolio filters -->
         <div class="portfolio-header reveal">
           <div class="portfolio-header-text">
             <span class="section-label">معرض المنجزات</span>
@@ -123,22 +108,19 @@
             <p class="section-subtitle">نماذج منتقاة لمشاريع تقنية وتجارية ناجحة تم تنفيذها باحترافية عالية</p>
           </div>
           <div class="filter-tabs">
-            <button class="filter-tab active" data-filter="all">الكل</button>
-            <button class="filter-tab" data-filter="store">تطوير المتاجر</button>
+            <button class="filter-tab active" data-filter="store">تطوير المتاجر</button>
             <button class="filter-tab" data-filter="graphic">جرافيك وإنتاج مرئي</button>
             <button class="filter-tab" data-filter="dev">برمجة وتطوير</button>
             <button class="filter-tab" data-filter="marketing">تسويق وحملات</button>
           </div>
         </div>
 
-        <!-- Slider with Local Images & Unified Aspect Ratio -->
         <div class="slider-wrapper">
           <div class="slider-track" id="portfolio-slider-track">
-            <!-- Populated dynamically via js/main.js -->
           </div>
         </div>
 
-        <!-- Slider Controls -->
+        <!-- Portfolio controls -->
         <div class="slider-controls">
           <button class="slider-btn slider-btn-next" aria-label="السابق">
             <i class="fa-solid fa-chevron-right"></i>
@@ -151,15 +133,13 @@
       </div>
     </section>
 
-    <!-- ========================
-         ABOUT SECTION ("من أنا")
-         ======================== -->
+    <!-- About section -->
     <section class="about" id="about">
       <div class="container-sm">
         <div class="about-card glass-card reveal">
           <div class="about-card-glow"></div>
           <div class="about-grid">
-            <!-- Bio Information -->
+            <!-- Biography -->
             <div class="about-bio">
               <div>
                 <span class="section-label">عن الاستشاري</span>
@@ -175,7 +155,7 @@
                 مشروعك وتوصل رسالتك بشكل احترافي. إلى جانب خبرتي الشخصية، أعمل مع فريق مختص من المصممين والمبرمجين
                 والمسوقين لتقديم خدمات متكاملة.
               </p>
-              <!-- Service Tags -->
+              <!-- Expertise tags -->
               <div class="service-tags">
                 <span class="service-tag">تطوير المتاجر الرقمية</span>
                 <span class="service-tag">التسويق الإلكتروني</span>
@@ -185,7 +165,7 @@
               </div>
             </div>
 
-            <!-- About Image -->
+            <!-- Portrait -->
             <div class="about-img-wrapper">
               <div class="about-img-frame">
                 <div class="about-img-inner">
@@ -199,13 +179,10 @@
       </div>
     </section>
 
-    <!-- ========================
-         SERVICES SECTION ("خدماتي")
-         Interactive Cyber-Cyan Accordion Grid
-         ======================== -->
+    <!-- Services section -->
     <section class="services" id="services">
       <div class="container">
-        <!-- Section Header -->
+        <!-- Services heading -->
         <div class="services-header reveal">
           <div class="services-header-text">
             <span class="section-label">مجالات العمل والخبرة</span>
@@ -214,11 +191,11 @@
           </div>
         </div>
 
-        <!-- 4-Card Services Grid -->
+        <!-- Service categories -->
         <div class="services-grid reveal">
 
-          <!-- Category 1: مجال تصميم الجرافيك والإنتاج المرئي -->
-          <div class="service-card glass-card active" data-category="graphic" tabindex="0" role="button" aria-expanded="true">
+          <!-- Design services -->
+          <div class="service-card glass-card" data-category="graphic" tabindex="0" role="button" aria-expanded="false">
             <div class="service-card-top">
               <div class="service-icon-box">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -231,7 +208,7 @@
             </div>
             <div class="service-card-footer">
               <span class="service-toggle-text">الخدمات المتاحة</span>
-              <span class="service-toggle-arrow">∧</span>
+              <span class="service-toggle-arrow">∨</span>
             </div>
             <div class="service-accordion-drawer">
               <div class="service-pills-list">
@@ -248,7 +225,7 @@
             </div>
           </div>
 
-          <!-- Category 2: تصميم المتاجر الإلكترونية -->
+          <!-- Ecommerce services -->
           <div class="service-card glass-card" data-category="ecommerce" tabindex="0" role="button" aria-expanded="false">
             <div class="service-card-top">
               <div class="service-icon-box">
@@ -274,7 +251,7 @@
             </div>
           </div>
 
-          <!-- Category 3: البرمجة والتطوير -->
+          <!-- Development services -->
           <div class="service-card glass-card" data-category="dev" tabindex="0" role="button" aria-expanded="false">
             <div class="service-card-top">
               <div class="service-icon-box">
@@ -304,7 +281,7 @@
             </div>
           </div>
 
-          <!-- Category 4: إطلاق الحملات والتسويق -->
+          <!-- Marketing services -->
           <div class="service-card glass-card" data-category="marketing" tabindex="0" role="button" aria-expanded="false">
             <div class="service-card-top">
               <div class="service-icon-box">
@@ -336,22 +313,19 @@
       </div>
     </section>
 
-    <!-- ========================
-         STATS SECTION ("إنجازاتي")
-         ======================== -->
+    <!-- Stats section -->
     <section class="stats" id="stats">
       <div class="stats-gradient"></div>
       <div class="container-sm">
-        <!-- Header -->
+        <!-- Stats heading -->
         <div class="stats-header reveal">
           <span class="section-label">أرقام تتحدث عن التجربة</span>
           <h2 class="section-title">إنجازاتي</h2>
           <div class="section-divider"></div>
         </div>
 
-        <!-- Stats Grid -->
+        <!-- Statistics -->
         <div class="stats-grid">
-          <!-- Experience: 5+ -->
           <div class="stat-card glass-card reveal reveal-delay-1">
             <div class="stat-icon stat-icon-1">
               <i class="fa-regular fa-clock"></i>
@@ -360,7 +334,6 @@
             <div class="stat-label">سنوات خبرة</div>
           </div>
 
-          <!-- Projects: 786+ -->
           <div class="stat-card glass-card reveal reveal-delay-2">
             <div class="stat-icon stat-icon-2">
               <i class="fa-solid fa-briefcase"></i>
@@ -369,7 +342,6 @@
             <div class="stat-label">مشروع</div>
           </div>
 
-          <!-- Clients: 997+ -->
           <div class="stat-card glass-card reveal reveal-delay-3">
             <div class="stat-icon stat-icon-3">
               <i class="fa-solid fa-user-group"></i>
@@ -381,13 +353,10 @@
       </div>
     </section>
 
-    <!-- ========================
-         TESTIMONIALS SECTION ("آراء العملاء")
-         Responsive 3-Card Carousel with ALL 10 Proof Files
-         ======================== -->
+    <!-- Testimonials section -->
     <section class="testimonials" id="testimonials">
       <div class="container">
-        <!-- Section Header -->
+        <!-- Testimonials heading -->
         <div class="testimonials-header reveal">
           <span class="section-label">آراء وتجارب العملاء</span>
           <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
@@ -395,11 +364,11 @@
           <div class="section-divider"></div>
         </div>
 
-        <!-- Testimonials 3-Card Carousel Slider -->
+        <!-- Testimonial carousel -->
         <div class="testimonials-carousel-wrapper slider-wrapper">
           <div class="testimonials-slider-track">
 
-            <!-- Review 1 (Proof: 1.png) -->
+            <!-- Review 1 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -442,7 +411,7 @@
               </div>
             </div>
 
-            <!-- Review 2 (Proof: 2.png) -->
+            <!-- Review 2 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -485,7 +454,7 @@
               </div>
             </div>
 
-            <!-- Review 3 (Proof: 3.png) -->
+            <!-- Review 3 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -528,7 +497,7 @@
               </div>
             </div>
 
-            <!-- Review 4 (Proof: 4.png) -->
+            <!-- Review 4 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -571,7 +540,7 @@
               </div>
             </div>
 
-            <!-- Review 5 (Proof: 5.png) -->
+            <!-- Review 5 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -614,7 +583,7 @@
               </div>
             </div>
 
-            <!-- Review 6 (Proof: 6.png) -->
+            <!-- Review 6 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -656,7 +625,7 @@
               </div>
             </div>
 
-            <!-- Review 7 (Proof: 7.png) -->
+            <!-- Review 7 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -698,7 +667,7 @@
               </div>
             </div>
 
-            <!-- Review 8 (Proof: 8.webp) -->
+            <!-- Review 8 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -740,7 +709,7 @@
               </div>
             </div>
 
-            <!-- Review 9 (Proof: 9.webp) -->
+            <!-- Review 9 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -783,7 +752,7 @@
               </div>
             </div>
 
-            <!-- Review 10 (Proof: 10.webp) -->
+            <!-- Review 10 -->
             <div class="testimonial-card glass-card">
               <div>
                 <div class="testimonial-header">
@@ -828,7 +797,7 @@
           </div>
         </div>
 
-        <!-- Carousel Navigation Controls -->
+        <!-- Carousel controls -->
         <div class="testimonials-controls">
           <button class="testimonials-btn testimonials-btn-next" aria-label="السابق">
             <i class="fa-solid fa-chevron-right"></i>
@@ -841,7 +810,7 @@
       </div>
     </section>
 
-    <!-- Testimonial Zoom Lightbox Modal -->
+    <!-- Testimonial lightbox -->
     <div id="testimonial-lightbox" class="lightbox-modal">
       <div class="lightbox-wrapper">
         <button class="lightbox-close" type="button" aria-label="إغلاق">&times;</button>
@@ -852,9 +821,7 @@
       </div>
     </div>
 
-    <!-- ========================
-         CTA SECTION
-         ======================== -->
+    <!-- Contact section -->
     <section class="cta-section" id="contact">
       <div class="container-md">
         <div class="cta-card glass-card reveal">
@@ -864,12 +831,12 @@
             أفكارك لواقع مبهر.
           </p>
           <div class="cta-buttons">
-            <!-- WhatsApp Button -->
+            <!-- WhatsApp -->
             <a class="btn-whatsapp" href="https://wa.me/970597632531" target="_blank" rel="noopener noreferrer">
               <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
               <span>تواصل عبر واتساب</span>
             </a>
-            <!-- Email Button -->
+            <!-- Email -->
             <a class="btn-email" href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmed.543asa@gmail.com"
               target="_blank" rel="noopener noreferrer">
               <i class="fa-regular fa-envelope"></i>
@@ -882,19 +849,17 @@
 
   </main>
 
-  <!-- ========================
-       FOOTER
-       ======================== -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
-      <!-- Brand & Dynamic Year -->
+      <!-- Copyright -->
       <div class="footer-brand">
         <span class="footer-brand-name">أحمد أبو عامر</span>
         <span>•</span>
         <span>جميع الحقوق محفوظة © <span id="current-year"></span></span>
       </div>
 
-      <!-- Social Links -->
+      <!-- Social links -->
       <div class="footer-socials">
         <a href="https://www.instagram.com/a7med.11.12?cplk=MXRiYWZ6eGVqNXN6ZA%3D%3D&utm_source=qr"
           aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -902,16 +867,16 @@
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
+  <!-- Back to top -->
   <a class="back-to-top" href="#hero" aria-label="للأعلى">
     <span>للأعلى</span>
     <i class="fa-solid fa-arrow-up" style="font-size: 0.65rem;"></i>
   </a>
 
-  <!-- Main JavaScript -->
+  <!-- Scripts -->
   <script src="js/main.js"></script>
 
-  <!-- Script لتأكيد إضافة الـ active لعناصر الـ Reveal عند التحميل -->
+  <!-- Reveal hero content -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const revealItems = document.querySelectorAll(".reveal-item");

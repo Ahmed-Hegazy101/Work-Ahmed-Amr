@@ -1,9 +1,6 @@
-/* =========================================
-   Ahmed Abu Amer - Portfolio CSS
-   Pure Vanilla CSS3 - Dark Cyberpunk Cyan
-   ========================================= */
+/* Portfolio styles */
 
-/* --- CSS Variables --- */
+/* Theme variables */
 :root {
   --bg-dark: #030a0f;
   --pill-bg: rgba(6, 20, 30, 0.75);
@@ -44,7 +41,7 @@
   --transition-slow: 0.7s ease;
 }
 
-/* --- Reset & Base --- */
+/* Base styles */
 *,
 *::before,
 *::after {
@@ -94,9 +91,7 @@ button {
   background: none;
 }
 
-/* ==========================================
-   Background Effects
-   ========================================== */
+/* Background effects */
 .bg-grid {
   position: fixed;
   inset: 0;
@@ -119,7 +114,7 @@ button {
   z-index: 1;
 }
 
-/* --- Container Classes --- */
+/* Containers */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -141,7 +136,7 @@ button {
   width: 100%;
 }
 
-/* --- Glassmorphism --- */
+/* Glass cards */
 .glass-card {
   background: linear-gradient(180deg, rgba(22, 28, 34, 0.92) 0%, rgba(14, 20, 26, 0.88) 100%);
   backdrop-filter: blur(12px);
@@ -156,9 +151,7 @@ button {
   box-shadow: var(--shadow-card-glow);
 }
 
-/* ==========================================
-   Header & Glass Navbar
-   ========================================== */
+/* Navigation */
 .header {
   position: fixed;
   top: 1.25rem;
@@ -336,9 +329,7 @@ button {
   background: rgba(0, 229, 255, 0.2);
 }
 
-/* ==========================================
-   Hero Section
-   ========================================== */
+/* Hero section */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -443,6 +434,8 @@ button {
   filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.9));
   animation: floatAvatar 4.5s ease-in-out infinite;
   -webkit-user-drag: none;
+  pointer-events: none;
+  user-select: none;
 }
 
 @keyframes floatAvatar {
@@ -510,9 +503,7 @@ button {
   transform: translateX(-6px);
 }
 
-/* ==========================================
-   Reveal Animations
-   ========================================== */
+/* Reveal animations */
 .reveal-item {
   opacity: 0;
   transform: translateY(30px);
@@ -530,9 +521,7 @@ button {
 .delay-3 { transition-delay: 0.4s; }
 .delay-4 { transition-delay: 0.55s; }
 
-/* ==========================================
-   Portfolio Section ("أعمالي")
-   ========================================== */
+/* Portfolio section */
 .portfolio {
   padding: 5rem 1rem;
   position: relative;
@@ -576,7 +565,7 @@ button {
   max-width: 650px;
 }
 
-/* Category Filter Tabs */
+/* Category filters */
 .filter-tabs {
   display: flex;
   align-items: center;
@@ -622,7 +611,7 @@ button {
   transform: translateY(-2px);
 }
 
-/* Carousel / Slider Container */
+/* Portfolio slider */
 .slider-wrapper {
   position: relative;
   overflow: hidden;
@@ -634,7 +623,7 @@ button {
 .slider-track {
   display: flex;
   gap: 1.25rem;
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.35s ease-out;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
@@ -648,12 +637,13 @@ button {
   transition: none !important;
 }
 
-/* Strict Standardized Portfolio Cards - 3 Cards Per View on Desktop */
+/* Portfolio cards */
 .work-card {
   min-width: calc(33.333% - 0.85rem);
   max-width: calc(33.333% - 0.85rem);
   flex-shrink: 0;
   border-radius: 1.25rem;
+  padding: 0.5rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -703,28 +693,39 @@ button {
   transform: scale(1.08);
 }
 
-/* Strict uniform image container with fixed aspect-ratio & cover */
+/* Portfolio images */
 .work-card-img {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #09121a;
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 0.85rem;
 }
 
 .work-card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
   display: block;
   transition: transform var(--transition-slow);
   -webkit-user-drag: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Disable native image dragging */
+.slider-track img,
+.testimonials-slider-track img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  draggable: false;
 }
 
 .work-card:hover .work-card-img img {
-  transform: scale(1.08);
+  transform: none;
 }
 
 .work-card-overlay {
@@ -774,7 +775,7 @@ button {
   margin-top: 0.2rem;
 }
 
-/* Slider Controls */
+/* Slider controls */
 .slider-controls {
   display: flex;
   align-items: center;
@@ -824,9 +825,7 @@ button {
   background: var(--cyan-bright);
 }
 
-/* ==========================================
-   About Me Section ("من أنا")
-   ========================================== */
+/* About section */
 .about {
   padding: 5rem 1rem;
   position: relative;
@@ -963,10 +962,7 @@ button {
   pointer-events: none;
 }
 
-/* ==========================================
-   Services Section ("خدماتي")
-   Interactive Cyber-Cyan Accordion Grid
-   ========================================== */
+/* Services section */
 .services {
   padding: 5rem 1rem;
   position: relative;
@@ -987,7 +983,7 @@ button {
   text-align: right;
 }
 
-/* 4-Card Responsive Grid */
+/* Service grid */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1009,7 +1005,7 @@ button {
   }
 }
 
-/* Glassmorphic Category Service Card */
+/* Service cards */
 .service-card {
   position: relative;
   background: linear-gradient(180deg, rgba(14, 22, 30, 0.88) 0%, rgba(6, 14, 20, 0.94) 100%);
@@ -1038,7 +1034,7 @@ button {
   box-shadow: 0 16px 40px -5px rgba(0, 229, 255, 0.32), 0 0 25px rgba(0, 229, 255, 0.15), inset 0 0 25px rgba(0, 229, 255, 0.05);
 }
 
-/* Card Top Bar: Icon + Count Badge */
+/* Service card header */
 .service-card-top {
   display: flex;
   align-items: center;
@@ -1081,7 +1077,7 @@ button {
   letter-spacing: 0.02em;
 }
 
-/* Card Content: Title & Description */
+/* Service card content */
 .service-card-content {
   text-align: right;
   margin-bottom: 1.25rem;
@@ -1111,7 +1107,7 @@ button {
   line-height: 1.65;
 }
 
-/* Card Footer: Toggle Bar */
+/* Service card footer */
 .service-card-footer {
   display: flex;
   align-items: center;
@@ -1150,7 +1146,7 @@ button {
   transition: transform var(--transition-base), color var(--transition-base);
 }
 
-/* Accordion Drawer */
+/* Service drawer */
 .service-accordion-drawer {
   max-height: 0;
   opacity: 0;
@@ -1171,7 +1167,7 @@ button {
   border-top: 1px dashed rgba(0, 229, 255, 0.22);
 }
 
-/* Interactive Sub-Services Pills / Capsules */
+/* Service pills */
 .service-pill {
   display: flex;
   align-items: center;
@@ -1232,9 +1228,7 @@ button {
   box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
 }
 
-/* ==========================================
-   Stats Section ("إنجازاتي")
-   ========================================== */
+/* Stats section */
 .stats {
   padding: 5rem 1rem;
   position: relative;
@@ -1317,10 +1311,7 @@ button {
   color: var(--cyan-200);
 }
 
-/* ==========================================
-   Premium Testimonials Section (#testimonials)
-   Responsive 3-Card Carousel with Lightbox Preview
-   ========================================== */
+/* Testimonials section */
 .testimonials {
   padding: 5.5rem 1rem;
   position: relative;
@@ -1332,7 +1323,7 @@ button {
   margin-bottom: 3rem;
 }
 
-/* 3-Card Carousel Container */
+/* Testimonials slider */
 .testimonials-carousel-wrapper {
   position: relative;
   overflow: hidden;
@@ -1344,7 +1335,7 @@ button {
 .testimonials-slider-track {
   display: flex;
   gap: 1.5rem;
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.35s ease-out;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
@@ -1358,7 +1349,7 @@ button {
   transition: none !important;
 }
 
-/* Testimonial Card in 3-Card Carousel */
+/* Testimonial cards */
 .testimonial-card {
   min-width: calc(33.333% - 1rem);
   max-width: calc(33.333% - 1rem);
@@ -1480,16 +1471,16 @@ button {
   flex-grow: 1;
 }
 
-/* WhatsApp Screenshot Proof Frame */
+/* Testimonial proof images */
 .testimonial-proof-container {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .testimonial-proof-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 160px;
+  aspect-ratio: 4 / 3;
+  max-height: 240px;
   border-radius: 0.75rem;
   overflow: hidden;
   background: rgba(3, 10, 15, 0.9);
@@ -1520,7 +1511,7 @@ button {
 }
 
 .testimonial-proof-frame:hover img {
-  transform: scale(1.05);
+  transform: none;
 }
 
 .testimonial-proof-frame:hover .testimonial-proof-overlay {
@@ -1547,7 +1538,7 @@ button {
   font-weight: 600;
 }
 
-/* Testimonials Slider Controls */
+/* Testimonial controls */
 .testimonials-controls {
   display: flex;
   align-items: center;
@@ -1597,7 +1588,7 @@ button {
   background: var(--cyan-bright);
 }
 
-/* Lightbox Modal */
+/* Lightbox */
 .lightbox-modal {
   display: none;
   position: fixed;
@@ -1647,7 +1638,7 @@ button {
 
 .lightbox-img-box {
   width: 100%;
-  max-height: 72vh;
+  max-height: 80vh;
   overflow: auto;
   border-radius: 0.75rem;
   background: #000;
@@ -1657,12 +1648,13 @@ button {
 }
 
 .lightbox-img-box img {
-  max-width: 100%;
-  max-height: 70vh;
+  object-fit: contain !important;
+  max-height: 85vh;
+  max-width: 90vw;
   width: auto;
   height: auto;
-  object-fit: contain;
   display: block;
+  margin: auto;
 }
 
 .lightbox-caption {
@@ -1677,28 +1669,32 @@ button {
   position: absolute;
   top: -1rem;
   left: -1rem;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
-  background: var(--cyan-bright);
-  color: #030a0f;
+  background: rgba(0, 229, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(0, 229, 255, 0.5);
+  color: var(--cyan-bright);
   font-size: 1.25rem;
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.4);
   cursor: pointer;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
 }
 
 .lightbox-close:hover {
-  transform: scale(1.12);
+  transform: rotate(90deg) scale(1.12);
+  background: rgba(0, 229, 255, 0.28);
+  box-shadow: 0 0 28px rgba(0, 229, 255, 0.65);
 }
 
-/* ==========================================
-   CTA Banner & Footer
-   ========================================== */
+/* Contact and footer */
 .cta-section {
   padding: 4.5rem 1rem;
   position: relative;
@@ -1859,11 +1855,9 @@ button {
   box-shadow: var(--shadow-glow-cyan);
 }
 
-/* ==========================================
-   Responsive Layout (Desktop, Tablet, Mobile)
-   ========================================== */
+/* Responsive layout */
 
-/* Tablet (640px to 1023px) */
+/* Tablet cards */
 @media (min-width: 640px) and (max-width: 1023px) {
   .work-card {
     min-width: calc(50% - 0.65rem);
@@ -1876,14 +1870,14 @@ button {
   }
 }
 
-/* Tablet & Up (min-width: 640px) */
+/* Tablet statistics */
 @media (min-width: 640px) {
   .stats-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Desktop (min-width: 768px) */
+/* Desktop layout */
 @media (min-width: 768px) {
   .portfolio-header {
     flex-direction: row;
@@ -1913,7 +1907,7 @@ button {
   }
 }
 
-/* Tablet Carousel Layout (640px to 1023px) */
+/* Tablet carousel */
 @media (min-width: 640px) and (max-width: 1023px) {
   .work-card {
     min-width: calc(50% - 0.65rem);
@@ -1926,7 +1920,7 @@ button {
   }
 }
 
-/* Desktop Carousel Layout (min-width: 1024px) */
+/* Desktop carousel */
 @media (min-width: 1024px) {
   .work-card {
     min-width: calc(33.333% - 0.85rem);
@@ -1939,8 +1933,12 @@ button {
   }
 }
 
-/* Mobile & Small Tablets (max-width: 768px) */
+/* Mobile and small tablets */
 @media (max-width: 768px) {
+  .bg-glow {
+    width: min(750px, calc(100vw - 2rem));
+  }
+
   .header {
     padding: 0 1rem;
   }
@@ -1957,7 +1955,7 @@ button {
     display: inline-flex;
   }
 
-  /* Hero Mobile Refinements */
+  /* Mobile hero */
   .hero {
     min-height: auto;
     padding-top: 5.75rem;
@@ -2016,7 +2014,7 @@ button {
     padding: 0.75rem 2.2rem;
   }
 
-  /* Other Sections Mobile Stacking */
+  /* Mobile section layout */
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -2032,10 +2030,19 @@ button {
 
   .about-img-wrapper {
     order: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .about-img-frame {
     max-width: 16rem;
+  }
+
+  .about-img-inner img {
+    margin: 0 auto;
   }
 
   .portfolio-header {
@@ -2046,7 +2053,7 @@ button {
     text-align: center;
   }
 
-  /* Filter Tabs Mobile Horizontal Scrollable Pill Bar */
+  /* Scrollable mobile filters */
   .filter-tabs {
     display: flex;
     flex-wrap: nowrap;
@@ -2081,7 +2088,7 @@ button {
   }
 }
 
-/* Mobile Screens (<640px) */
+/* Small screens */
 @media (max-width: 639px) {
   .work-card {
     min-width: 100%;
@@ -2102,7 +2109,7 @@ button {
   }
 }
 
-/* Extra Small Mobile (max-width: 480px) */
+/* Extra-small screens */
 @media (max-width: 480px) {
   .hero-phrase .l1,
   .hero-phrase .l2 {
